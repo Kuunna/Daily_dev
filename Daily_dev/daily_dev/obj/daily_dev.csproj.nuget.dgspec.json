@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Daily_dev\\Daily_dev\\daily_dev\\daily_dev.csproj": {}
+    "D:\\Daily_dev-Challenge\\Daily_dev\\daily_dev\\daily_dev.csproj": {}
   },
   "projects": {
-    "D:\\Daily_dev\\Daily_dev\\daily_dev\\daily_dev.csproj": {
+    "D:\\Daily_dev-Challenge\\Daily_dev\\daily_dev\\daily_dev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Daily_dev\\Daily_dev\\daily_dev\\daily_dev.csproj",
+        "projectUniqueName": "D:\\Daily_dev-Challenge\\Daily_dev\\daily_dev\\daily_dev.csproj",
         "projectName": "daily_dev",
-        "projectPath": "D:\\Daily_dev\\Daily_dev\\daily_dev\\daily_dev.csproj",
+        "projectPath": "D:\\Daily_dev-Challenge\\Daily_dev\\daily_dev\\daily_dev.csproj",
         "packagesPath": "C:\\Users\\truon\\.nuget\\packages\\",
-        "outputPath": "D:\\Daily_dev\\Daily_dev\\daily_dev\\obj\\",
+        "outputPath": "D:\\Daily_dev-Challenge\\Daily_dev\\daily_dev\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,22 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "CodeHollow.FeedReader": {
+              "target": "Package",
+              "version": "[1.2.6, )"
+            },
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -55,9 +71,17 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "Microsoft.SyndicationFeed.ReaderWriter": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.8.0, )"
+            },
+            "System.ServiceModel.Syndication": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

@@ -576,6 +576,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "daily_dev.Controllers.NewsController",
+    "Method": "ImportRssFeeds",
+    "RelativePath": "api/News/import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "daily_dev.Controllers.SourceController",
     "Method": "GetAllSources",
     "RelativePath": "api/Source",
