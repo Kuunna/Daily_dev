@@ -95,3 +95,53 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
 - `POST /api/category`: Tạo danh mục mới.
 - `PUT /api/category/{id}`: Cập nhật danh mục.
 - `DELETE /api/category/{id}`: Xóa danh mục.
+
+
+
+## Các bước hoàn thành project
+
+### 1. Thiết kế và tạo Database
+- Tạo cơ sở dữ liệu theo dạng **star schema** với các bảng chính:
+  - `Fact_News`
+  - `Dim_Source`
+  - `Dim_Tag`
+  - `Dim_User`
+  - `Fact_Article_Interaction`
+  - `Fact_Bookmark`
+  - `Fact_History`
+  - `Dim_Category`
+  - Các bảng trung gian như `User_Tag`, `User_Source`
+  
+### 2. Tạo các API Controllers
+- Tạo các controller quản lý dữ liệu tương ứng với các bảng trong database:
+  - `NewsController`: Quản lý bài viết tin tức.
+  - `SourceController`: Quản lý nguồn tin.
+  - `UserController`: Quản lý người dùng.
+  - `TagController`: Quản lý các thẻ.
+  - `InteractionController`: Quản lý tương tác của người dùng với bài viết.
+  - `BookmarkController`: Quản lý việc bookmark.
+  - `HistoryController`: Quản lý lịch sử đọc bài viết.
+  - `CategoryController`: Quản lý danh mục bài viết.
+
+### 3. Tích hợp RSS Feeds
+- Tạo service để đọc các nguồn tin tức từ **RSS feed** (ví dụ: Báo Mới, Tuổi Trẻ, Dân Trí, v.v.).
+- Lập lịch tự động để cập nhật các bài viết từ RSS vào database (sử dụng **Hangfire** hoặc **Quartz.NET**).
+
+### 4. Tạo Unit Test với MS Test
+- Cài đặt **MS Test** trong project để kiểm thử các thành phần backend:
+  - Test logic của các service (tạo mới, cập nhật, xóa, tìm kiếm dữ liệu).
+  - Test các repository để đảm bảo kết nối và truy xuất dữ liệu từ database.
+  - Test các Controller với các trường hợp thành công và thất bại.
+  
+### 5. Kiểm thử API
+- Sử dụng **Postman** hoặc **Swagger** để kiểm thử các API đã xây dựng.
+  - Đảm bảo tất cả các endpoint hoạt động đúng.
+  - Xác thực dữ liệu trả về và kiểm tra các trạng thái HTTP tương ứng.
+
+### 6. Tinh chỉnh và tối ưu
+- Tối ưu câu truy vấn SQL và cấu trúc API để cải thiện hiệu suất xử lý dữ liệu.
+- Đảm bảo code sạch, dễ bảo trì và tuân theo các best practices của ASP.NET Core.
+
+### 7. Triển khai (Optional)
+- Triển khai ứng dụng lên môi trường hosting hoặc server nội bộ (nếu có).
+- Có thể sử dụng các dịch vụ như **Azure**, **AWS**, hoặc **DigitalOcean** để host backend.
