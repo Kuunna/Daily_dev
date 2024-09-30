@@ -123,30 +123,25 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
   - `HistoryController`: Quản lý lịch sử đọc bài viết.
   - `CategoryController`: Quản lý danh mục bài viết.
 
-### 3. Tạo Service Layer
-- Tạo các **Service** để xử lý logic nghiệp vụ:
-  - Ví dụ: `NewsService`, `UserService`, `SourceService`, v.v.
-- Service sẽ chứa logic nghiệp vụ và tương tác trực tiếp với DbContext để thực hiện các thao tác với database.
-
-### 4. Tích hợp RSS Feeds
+### 3. Tích hợp RSS Feeds
 - Tạo service để đọc các nguồn tin tức từ **RSS feed** (ví dụ: Báo Mới, Tuổi Trẻ, Dân Trí, v.v.).
 - Lập lịch tự động để cập nhật các bài viết từ RSS vào database (sử dụng **Hangfire** hoặc **Quartz.NET**).
 
-### 5. Tạo Unit Test với MS Test
+### 4. Tạo Unit Test với MS Test
 - Cài đặt **MS Test** trong project để kiểm thử các thành phần backend:
   - Test logic của các service (tạo mới, cập nhật, xóa, tìm kiếm dữ liệu).
   - Test các repository để đảm bảo kết nối và truy xuất dữ liệu từ database.
   - Test các Controller với các trường hợp thành công và thất bại.
   
-### 6. Kiểm thử API
+### 5. Kiểm thử API
 - Sử dụng **Postman** hoặc **Swagger** để kiểm thử các API đã xây dựng.
   - Đảm bảo tất cả các endpoint hoạt động đúng.
   - Xác thực dữ liệu trả về và kiểm tra các trạng thái HTTP tương ứng.
 
-### 7. Tinh chỉnh và tối ưu
+### 6. Tinh chỉnh và tối ưu
 - Tối ưu câu truy vấn SQL và cấu trúc API để cải thiện hiệu suất xử lý dữ liệu.
 - Đảm bảo code sạch, dễ bảo trì và tuân theo các best practices của ASP.NET Core.
 
-### 8. Triển khai (Optional)
+### 7. Triển khai (Optional)
 - Triển khai ứng dụng lên môi trường hosting hoặc server nội bộ (nếu có).
 - Có thể sử dụng các dịch vụ như **Azure**, **AWS**, hoặc **DigitalOcean** để host backend.
