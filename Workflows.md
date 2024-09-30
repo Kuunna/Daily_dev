@@ -132,7 +132,7 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
 - Tạo service để đọc các nguồn tin tức từ **RSS feed** (ví dụ: Báo Mới, Tuổi Trẻ, Dân Trí, v.v.).
 - Lập lịch tự động để cập nhật các bài viết từ RSS vào database (sử dụng **Hangfire** hoặc **Quartz.NET**).
 
-### 56. Tạo Unit Test với MS Test
+### 5. Tạo Unit Test với MS Test
 - Cài đặt **MS Test** trong project để kiểm thử các thành phần backend:
   - Test logic của các service (tạo mới, cập nhật, xóa, tìm kiếm dữ liệu).
   - Test các repository để đảm bảo kết nối và truy xuất dữ liệu từ database.
