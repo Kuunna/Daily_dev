@@ -134,14 +134,6 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
   - Đảm bảo các chức năng chính (thêm mới, cập nhật, xóa, tìm kiếm) đều được kiểm thử đầy đủ.
   
 ### 5. Kiểm thử API
-- Sử dụng **Postman** hoặc **Swagger** để kiểm thử các API đã xây dựng.
+- Sử dụng **Postman** để kiểm thử các API đã xây dựng.
   - Đảm bảo tất cả các endpoint hoạt động đúng.
   - Xác thực dữ liệu trả về và kiểm tra các trạng thái HTTP tương ứng.
-
-### 6. Tinh chỉnh và tối ưu
-- Tối ưu câu truy vấn SQL và cấu trúc API để cải thiện hiệu suất xử lý dữ liệu.
-- Đảm bảo code sạch, dễ bảo trì và tuân theo các best practices của ASP.NET Core.
-
-### 7. Triển khai (Optional)
-- Triển khai ứng dụng lên môi trường hosting hoặc server nội bộ (nếu có).
-- Có thể sử dụng các dịch vụ như **Azure**, **AWS**, hoặc **DigitalOcean** để host backend.
