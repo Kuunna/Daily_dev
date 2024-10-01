@@ -124,8 +124,8 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
   - `CategoryController`: Quản lý danh mục bài viết.
 
 ### 3. Tích hợp RSS Feeds
-- Tạo service để đọc các nguồn tin tức từ **RSS feed** (ví dụ: Báo Mới, Tuổi Trẻ, Dân Trí, v.v.).
-- Lập lịch tự động để cập nhật các bài viết từ RSS vào database (sử dụng **Hangfire** hoặc **Quartz.NET**).
+- Tạo một phương thức trong một Controller để đọc các nguồn RSS feed từ các trang tin tức như Báo Mới, Tuổi Trẻ, Dân Trí và lưu xuống database.
+- Lập lịch tự động (ví dụ: với Hangfire) để hệ thống tự động cập nhật các bài viết từ RSS.
 
 ### 4. Tạo Unit Test với MS Test
 - Cài đặt **MS Test** trong project để kiểm thử các thành phần backend:
