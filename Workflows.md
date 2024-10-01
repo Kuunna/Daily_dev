@@ -129,9 +129,9 @@ Dự án hiện tại chỉ tập trung vào backend, chưa quan tâm đến b�
 
 ### 4. Tạo Unit Test với MS Test
 - Cài đặt **MS Test** trong project để kiểm thử các thành phần backend:
-  - Test logic của các service (tạo mới, cập nhật, xóa, tìm kiếm dữ liệu).
-  - Test các repository để đảm bảo kết nối và truy xuất dữ liệu từ database.
-  - Test các Controller với các trường hợp thành công và thất bại.
+  - Tạo Unit Test cho các Controller và các chức năng chính:
+    - Ví dụ: Test việc tạo mới một bài viết, test việc lấy danh sách nguồn tin, test tương tác người dùng với bài viết.
+  - Đảm bảo các chức năng chính (thêm mới, cập nhật, xóa, tìm kiếm) đều được kiểm thử đầy đủ.
   
 ### 5. Kiểm thử API
 - Sử dụng **Postman** hoặc **Swagger** để kiểm thử các API đã xây dựng.
