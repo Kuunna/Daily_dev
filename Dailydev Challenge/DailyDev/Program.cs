@@ -15,6 +15,15 @@ builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryR
 builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
 builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
 
+// Đăng ký HttpClient vào hệ thống DI
+builder.Services.AddHttpClient();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+
 
 // Add services to the container
 builder.Services.AddControllers();

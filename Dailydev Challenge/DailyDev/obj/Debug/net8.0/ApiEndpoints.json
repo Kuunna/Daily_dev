@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "DailyDev.Controllers.NewsController",
+    "Method": "GetRssFeed",
+    "RelativePath": "api/News/get-rss",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rssUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DailyDev.Controllers.CategoryController",
     "Method": "GetAll",
     "RelativePath": "Category",

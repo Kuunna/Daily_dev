@@ -60,6 +60,18 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "System.ServiceModel.Syndication": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Xml.Linq": {
+              "target": "Package",
+              "version": "[3.5.21022.801, )"
             }
           },
           "imports": [

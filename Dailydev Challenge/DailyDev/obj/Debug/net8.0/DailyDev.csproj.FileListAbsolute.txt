@@ -149,3 +149,4 @@ D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\refint\Daily
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\DailyDev.pdb
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\DailyDev.genruntimeconfig.cache
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\ref\DailyDev.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\System.ServiceModel.Syndication.dll
