@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "DailyDev.Controllers.ArticlesController",
-    "Method": "GetArticles",
-    "RelativePath": "api/Articles",
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "GetAll",
+    "RelativePath": "Category",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[DailyDev.Models.Article, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Category, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,25 +20,51 @@
     ]
   },
   {
-    "ContainingType": "DailyDev.Controllers.ArticlesController",
-    "Method": "AddArticle",
-    "RelativePath": "api/Articles",
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "Add",
+    "RelativePath": "Category",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "article",
-        "Type": "DailyDev.Models.Article",
+        "Name": "category",
+        "Type": "DailyDev.Models.Category",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.ArticlesController",
-    "Method": "UpdateArticle",
-    "RelativePath": "api/Articles/{id}",
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "GetById",
+    "RelativePath": "Category/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.Category",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "Update",
+    "RelativePath": "Category/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -49,17 +75,17 @@
         "IsRequired": true
       },
       {
-        "Name": "article",
-        "Type": "DailyDev.Models.Article",
+        "Name": "category",
+        "Type": "DailyDev.Models.Category",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.ArticlesController",
-    "Method": "DeleteArticle",
-    "RelativePath": "api/Articles/{id}",
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "Delete",
+    "RelativePath": "Category/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -73,81 +99,71 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.RssController",
-    "Method": "GetArticles",
-    "RelativePath": "api/Rss/articles",
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "GetAll",
+    "RelativePath": "Item",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Item, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "DailyDev.Controllers.RssController",
-    "Method": "ReadRss",
-    "RelativePath": "api/Rss/read",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.RssController",
-    "Method": "GetRssSources",
-    "RelativePath": "api/Rss/sources",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.RssController",
-    "Method": "AddRssSource",
-    "RelativePath": "api/Rss/sources",
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "Add",
+    "RelativePath": "Item",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "source",
-        "Type": "DailyDev.Models.RssSource",
+        "Name": "item",
+        "Type": "DailyDev.Models.Item",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.SourceController",
-    "Method": "GetSources",
-    "RelativePath": "api/Source",
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "GetById",
+    "RelativePath": "Item/{id}",
     "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.SourceController",
-    "Method": "AddSource",
-    "RelativePath": "api/Source",
-    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "source",
-        "Type": "DailyDev.Models.Source",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.Item",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "DailyDev.Controllers.SourceController",
-    "Method": "UpdateSource",
-    "RelativePath": "api/Source/{id}",
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "Update",
+    "RelativePath": "Item/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -158,17 +174,17 @@
         "IsRequired": true
       },
       {
-        "Name": "source",
-        "Type": "DailyDev.Models.Source",
+        "Name": "item",
+        "Type": "DailyDev.Models.Item",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.SourceController",
-    "Method": "DeleteSource",
-    "RelativePath": "api/Source/{id}",
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "Delete",
+    "RelativePath": "Item/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -182,16 +198,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.UserFavoritesController",
-    "Method": "GetUserFavorites",
-    "RelativePath": "api/UserFavorites",
+    "ContainingType": "DailyDev.Controllers.ProviderController",
+    "Method": "GetAll",
+    "RelativePath": "Provider",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[DailyDev.Models.UserFavorite, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Provider, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -202,25 +218,72 @@
     ]
   },
   {
-    "ContainingType": "DailyDev.Controllers.UserFavoritesController",
-    "Method": "AddUserFavorite",
-    "RelativePath": "api/UserFavorites",
+    "ContainingType": "DailyDev.Controllers.ProviderController",
+    "Method": "Add",
+    "RelativePath": "Provider",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userFavorite",
-        "Type": "DailyDev.Models.UserFavorite",
+        "Name": "provider",
+        "Type": "DailyDev.Models.Provider",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.UserFavoritesController",
-    "Method": "DeleteUserFavorite",
-    "RelativePath": "api/UserFavorites/{id}",
+    "ContainingType": "DailyDev.Controllers.ProviderController",
+    "Method": "GetById",
+    "RelativePath": "Provider/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.Provider",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ProviderController",
+    "Method": "Update",
+    "RelativePath": "Provider/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "provider",
+        "Type": "DailyDev.Models.Provider",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ProviderController",
+    "Method": "Delete",
+    "RelativePath": "Provider/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -234,16 +297,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.UsersController",
-    "Method": "GetUsers",
-    "RelativePath": "api/Users",
+    "ContainingType": "DailyDev.Controllers.TagController",
+    "Method": "GetAll",
+    "RelativePath": "Tag",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[DailyDev.Models.User, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Tag, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -254,9 +317,108 @@
     ]
   },
   {
-    "ContainingType": "DailyDev.Controllers.UsersController",
-    "Method": "AddUser",
-    "RelativePath": "api/Users",
+    "ContainingType": "DailyDev.Controllers.TagController",
+    "Method": "Add",
+    "RelativePath": "Tag",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tag",
+        "Type": "DailyDev.Models.Tag",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.TagController",
+    "Method": "GetById",
+    "RelativePath": "Tag/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.Tag",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.TagController",
+    "Method": "Update",
+    "RelativePath": "Tag/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tag",
+        "Type": "DailyDev.Models.Tag",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.TagController",
+    "Method": "Delete",
+    "RelativePath": "Tag/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.User, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "Add",
+    "RelativePath": "User",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -270,9 +432,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.UsersController",
-    "Method": "UpdateUser",
-    "RelativePath": "api/Users/{id}",
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "GetById",
+    "RelativePath": "User/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "Update",
+    "RelativePath": "User/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -291,9 +479,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.UsersController",
-    "Method": "DeleteUser",
-    "RelativePath": "api/Users/{id}",
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "Delete",
+    "RelativePath": "User/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

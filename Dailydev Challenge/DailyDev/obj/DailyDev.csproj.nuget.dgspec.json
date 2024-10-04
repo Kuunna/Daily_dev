@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dailydev Challenge\\DailyDev\\DailyDev.csproj": {}
+    "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\DailyDev.csproj": {}
   },
   "projects": {
-    "D:\\Dailydev Challenge\\DailyDev\\DailyDev.csproj": {
+    "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\DailyDev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dailydev Challenge\\DailyDev\\DailyDev.csproj",
+        "projectUniqueName": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\DailyDev.csproj",
         "projectName": "DailyDev",
-        "projectPath": "D:\\Dailydev Challenge\\DailyDev\\DailyDev.csproj",
+        "projectPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\DailyDev.csproj",
         "packagesPath": "C:\\Users\\truon\\.nuget\\packages\\",
-        "outputPath": "D:\\Dailydev Challenge\\DailyDev\\obj\\",
+        "outputPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truon\\AppData\\Roaming\\NuGet\\NuGet.Config",
