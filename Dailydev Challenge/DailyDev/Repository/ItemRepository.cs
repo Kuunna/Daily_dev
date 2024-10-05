@@ -16,7 +16,7 @@ namespace DailyDev.Repository
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("INSERT INTO Item (Title, Link, Guid, PubDate, Image, CategoryId, author, summary, comments) VALUES (@Title, @Link, @Guid, @PubDate, @Image, @CategoryId, @Author, @Summary, @Comments)", connection);
+                var command = new SqlCommand("INSERT INTO Item (Title, Link, Guid, PubDate, Image, CategoryId, Author, Summary, Comments) VALUES (@Title, @Link, @Guid, @PubDate, @Image, @CategoryId, @Author, @Summary, @Comments)", connection);
                 command.Parameters.AddWithValue("@Title", item.Title);
                 command.Parameters.AddWithValue("@Link", item.Link);
                 command.Parameters.AddWithValue("@Guid", item.Guid);

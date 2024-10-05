@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,32 +22,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\appsettings.json",
-              "RelativeDocumentMoniker": "DailyDev\\appsettings.json",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\appsettings.json",
-              "RelativeToolTip": "DailyDev\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-04T20:21:32.462Z",
+              "DocumentIndex": 0,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "DailyDev\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T20:16:58.241Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Controllers\\NewsController.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "DailyDev\\Controllers\\NewsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repository\\CategoryRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\CategoryRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repository\\CategoryRepository.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAA3wHMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T16:36:27.894Z",
+              "WhenOpened": "2024-10-05T20:16:49.902Z",
               "EditorCaption": ""
             },
             {
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "DailyDev\\Program.cs",
               "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
               "RelativeToolTip": "DailyDev\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T14:31:25.795Z",
               "EditorCaption": ""
