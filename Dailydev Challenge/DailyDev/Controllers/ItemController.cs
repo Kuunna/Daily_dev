@@ -95,9 +95,9 @@ namespace DailyDev.Controllers
                 var summary = item.Element("description")?.Value;
                 var comments = item.Element("comments")?.Value;
 
-                // Lấy hình ảnh từ thẻ <enclosure>
+                // Lấy img từ thẻ <enclosure>
                 var enclosure = item.Element("enclosure");
-                var imageUrl = enclosure?.Attribute("url")?.Value; // Lấy giá trị của thuộc tính url
+                var imageUrl = enclosure?.Attribute("url")?.Value; 
 
                 // Chuyển đổi pubDate thành DateTime
                 var parsedDate = ParseRssDate(pubDate);
@@ -109,7 +109,7 @@ namespace DailyDev.Controllers
                     Link = link,
                     Guid = guid,
                     PubDate = parsedDate,
-                    Image = imageUrl ?? "Null", // Sử dụng giá trị "Null" nếu không có ảnh
+                    Image = imageUrl ?? "Null", 
                     CategoryId = 1, // Giả định một CategoryId cho ví dụ này
                     Author = author ?? "Null",
                     Summary = summary ?? "Null",
@@ -117,7 +117,7 @@ namespace DailyDev.Controllers
                 };
 
                 // Lưu vào cơ sở dữ liệu
-                _itemRepository.Add(newItem);
+                _itemRepository.Upsert(newItem);
             }
         }
 

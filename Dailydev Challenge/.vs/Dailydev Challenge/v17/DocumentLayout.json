@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repository\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repository\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repository\\ItemRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repository\\ItemRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T13:25:52.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemController.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\ItemController.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Controllers\\ItemController.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\ItemController.cs",
+              "RelativeToolTip": "DailyDev\\Controllers\\ItemController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwHcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T13:23:49.487Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
