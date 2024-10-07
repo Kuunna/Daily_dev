@@ -42,6 +42,7 @@ CREATE TABLE [NewTag] (
   [NewId] INT,
   [TagId] INT
 )
+  
 GO
 
 CREATE TABLE [User] (
