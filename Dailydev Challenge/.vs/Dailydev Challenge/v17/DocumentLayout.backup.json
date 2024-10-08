@@ -18,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ItemRepository.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Repository\\ItemRepository.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
-              "RelativeToolTip": "DailyDev\\Repository\\ItemRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAcwBoAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T13:25:52.632Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -41,9 +28,22 @@
               "RelativeDocumentMoniker": "DailyDev\\Controllers\\ItemController.cs",
               "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\ItemController.cs",
               "RelativeToolTip": "DailyDev\\Controllers\\ItemController.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAgwHcAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAIwHQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T13:23:49.487Z",
+              "WhenOpened": "2024-10-08T20:52:04.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repository\\ItemRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repository\\ItemRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repository\\ItemRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T20:40:15.813Z",
               "EditorCaption": ""
             }
           ]

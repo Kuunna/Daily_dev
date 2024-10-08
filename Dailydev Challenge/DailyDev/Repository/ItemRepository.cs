@@ -32,43 +32,6 @@ namespace DailyDev.Repository
                 command.ExecuteNonQuery();
             }
         }
-        public void Upsert(Item item)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                // Sử dụng lệnh MERGE để thực hiện upsert
-                var command = new SqlCommand(@"
-                    MERGE Item AS target
-                    USING (SELECT @Guid AS Guid) AS source
-                    ON target.Guid = source.Guid
-                    WHEN MATCHED THEN
-                        UPDATE SET 
-                            Title = @Title,
-                            Link = @Link,
-                            PubDate = @PubDate,
-                            Image = @Image,
-                            CategoryId = @CategoryId,
-                            Author = @Author,
-                            Summary = @Summary,
-                            Comments = @Comments
-                    WHEN NOT MATCHED THEN
-                        INSERT (Title, Link, Guid, PubDate, Image, CategoryId, Author, Summary, Comments)
-                        VALUES (@Title, @Link, @Guid, @PubDate, @Image, @CategoryId, @Author, @Summary, @Comments);", connection);
-
-                command.Parameters.AddWithValue("@Title", item.Title);
-                command.Parameters.AddWithValue("@Link", item.Link);
-                command.Parameters.AddWithValue("@Guid", item.Guid);
-                command.Parameters.AddWithValue("@PubDate", item.PubDate);
-                command.Parameters.AddWithValue("@Image", item.Image);
-                command.Parameters.AddWithValue("@CategoryId", item.CategoryId);
-                command.Parameters.AddWithValue("@Author", item.Author);
-                command.Parameters.AddWithValue("@Summary", item.Summary);
-                command.Parameters.AddWithValue("@Comments", item.Comments);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
 
         public IEnumerable<Item> GetAll()
         {
@@ -172,6 +135,28 @@ namespace DailyDev.Repository
                 command.ExecuteNonQuery();
             }
         }
+        public void Upsert(Item item)
+        {
+            // Kiểm tra xem mục nhập đã tồn tại hay chưa
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Item WHERE Guid = @Guid", connection);
+                checkCommand.Parameters.AddWithValue("@Guid", item.Guid);
+
+                connection.Open();
+                var count = (int)checkCommand.ExecuteScalar(); // ExecuteScalar() trả về giá trị đầu tiên của cột đầu tiên trong kết quả
+
+                if (count > 0)
+                {
+                    Update(item);
+                }
+                else
+                {
+                    Add(item);
+                }
+            }
+        }
+
     }
 
 }
