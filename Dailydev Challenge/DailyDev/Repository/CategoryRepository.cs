@@ -1,4 +1,5 @@
 ﻿using DailyDev.Models;
+using HtmlAgilityPack;
 using System.Data.SqlClient;
 
 namespace DailyDev.Repository
@@ -11,7 +12,27 @@ namespace DailyDev.Repository
         {
             _connectionString = connectionString;
         }
+        public void Upsert(Category category)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                // Kiểm tra xem mục nhập đã tồn tại hay chưa
+                var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Category WHERE Name = @Name", connection);
+                checkCommand.Parameters.AddWithValue("@Name", category.Name);
 
+                connection.Open();
+                var count = (int)checkCommand.ExecuteScalar(); // ExecuteScalar() trả về giá trị đầu tiên của cột đầu tiên trong kết quả
+
+                if (count > 0)
+                {
+                    Update(category);
+                }
+                else
+                {
+                    Add(category);
+                }
+            }
+        }
         public void Add(Category category)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -109,7 +130,112 @@ namespace DailyDev.Repository
                 command.ExecuteNonQuery();
             }
         }
+
+        public void AddCategoryFromProvider(Provider provider)
+        {
+            // Tải nội dung RSS từ nguồn
+            HtmlWeb web = new HtmlWeb();
+            var doc = web.Load(provider.Source);
+
+            if (provider.Source.Contains("vnexpress"))
+            {
+                // // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='list-rss']/li/a");
+                if (rssNodes != null) // Kiểm tra nếu có thẻ <item>
+                {
+                    foreach (var node in rssNodes)
+                    {
+                        string name = node.SelectSingleNode("title")?.InnerText.Trim();
+                        string source = node.SelectSingleNode("link")?.InnerText.Trim();
+
+                        // Kiểm tra giá trị không null hoặc rỗng
+                        if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
+                        {
+                            var category = new Category
+                            {
+                                Name = name,
+                                Source = source,
+                                ProviderId = provider.Id
+                            };
+                            Upsert(category); 
+                        }
+                    }
+                }
+            }
+            else if (provider.Source.Contains("tuoitre"))
+            {
+                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='list-rss clearfix']/li/a");
+
+                foreach (var node in rssNodes)
+                {
+                    string name = node.SelectSingleNode("title")?.InnerText.Trim();
+                    string source = node.Attributes["href"].Value; // URL RSS
+
+                    if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
+                    {
+                        var category = new Category
+                        {
+                            Name = name,
+                            Source = source,
+                            ProviderId = provider.Id
+                        };
+                        Upsert(category);
+                    }
+                }
+            }
+            else if (provider.Source.Contains("dantri"))
+            {
+                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                var rssNodes = doc.DocumentNode.SelectNodes("//ol[@class='flex-col']/li/a");
+
+                foreach (var node in rssNodes)
+                {
+                    string name = node.InnerText.Trim();
+                    string source = node.Attributes["href"].Value; // URL RSS
+
+                    if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
+                    {
+                        var category = new Category
+                        {
+                            Name = name,
+                            Source = source,
+                            ProviderId = provider.Id
+                        };
+                        Upsert(category);
+                    }
+                }
+            }
+            else if (provider.Source.Contains("vietnamnet"))
+            {
+                
+            }
+            else if (provider.Source.Contains("laodong"))
+            {
+                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='rss-lst']/li/a");
+
+                foreach (var node in rssNodes)
+                {
+                    string name = node.InnerText.Trim();
+                    string source = node.Attributes["href"].Value; // URL RSS
+
+                    if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
+                    {
+                        var category = new Category
+                        {
+                            Name = name,
+                            Source = source,
+                            ProviderId = provider.Id
+                        };
+                        Upsert(category);
+                    }
+                }
+            }
+            else if (provider.Source.Contains("nhandan"))
+            {
+                
+            }
+        }
     }
-
-
 }

@@ -11,7 +11,6 @@ namespace DailyDev.Repository
         {
             _connectionString = connectionString;
         }
-
         public void Add(Provider provider)
         {
             using (var connection = new SqlConnection(_connectionString))

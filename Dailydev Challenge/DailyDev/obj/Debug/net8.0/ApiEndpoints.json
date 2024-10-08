@@ -214,6 +214,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DailyDev.Controllers.CategoryController",
+    "Method": "UpdateCategoriesFromProviders",
+    "RelativePath": "Category/update-from-providers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DailyDev.Controllers.ProviderController",
     "Method": "GetAll",
     "RelativePath": "Provider",

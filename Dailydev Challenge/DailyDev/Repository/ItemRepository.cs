@@ -11,6 +11,27 @@ namespace DailyDev.Repository
         {
             _connectionString = connectionString;
         }
+        public void Upsert(Item item)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                // Kiểm tra xem mục nhập đã tồn tại hay chưa
+                var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Item WHERE Guid = @Guid", connection);
+                checkCommand.Parameters.AddWithValue("@Guid", item.Guid);
+
+                connection.Open();
+                var count = (int)checkCommand.ExecuteScalar(); // ExecuteScalar() trả về giá trị đầu tiên của cột đầu tiên trong kết quả
+
+                if (count > 0)
+                {
+                    Update(item);
+                }
+                else
+                {
+                    Add(item);
+                }
+            }
+        }
 
         public void Add(Item item)
         {
@@ -133,27 +154,6 @@ namespace DailyDev.Repository
                 command.Parameters.AddWithValue("@Id", id);
                 connection.Open();
                 command.ExecuteNonQuery();
-            }
-        }
-        public void Upsert(Item item)
-        {
-            // Kiểm tra xem mục nhập đã tồn tại hay chưa
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Item WHERE Guid = @Guid", connection);
-                checkCommand.Parameters.AddWithValue("@Guid", item.Guid);
-
-                connection.Open();
-                var count = (int)checkCommand.ExecuteScalar(); // ExecuteScalar() trả về giá trị đầu tiên của cột đầu tiên trong kết quả
-
-                if (count > 0)
-                {
-                    Update(item);
-                }
-                else
-                {
-                    Add(item);
-                }
             }
         }
 

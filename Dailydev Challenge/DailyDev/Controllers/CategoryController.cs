@@ -9,10 +9,12 @@ namespace DailyDev.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly CategoryRepository _categoryRepository;
+        private readonly ProviderRepository _providerRepository;
 
-        public CategoryController(CategoryRepository categoryRepository)
+        public CategoryController(CategoryRepository categoryRepository, ProviderRepository providerRepository)
         {
             _categoryRepository = categoryRepository;
+            _providerRepository = providerRepository;
         }
 
         [HttpGet]
@@ -51,6 +53,18 @@ namespace DailyDev.Controllers
         {
             _categoryRepository.Delete(id);
             return NoContent();
+        }
+
+        [HttpPost("update-from-providers")]
+        public ActionResult UpdateCategoriesFromProviders()
+        {
+            var providers = _providerRepository.GetAll();
+            foreach (var provider in providers)
+            {
+                // Cập nhật category từ từng provider
+                _categoryRepository.AddCategoryFromProvider(provider);
+            }
+            return Ok("Categories updated from providers successfully.");
         }
     }
 
