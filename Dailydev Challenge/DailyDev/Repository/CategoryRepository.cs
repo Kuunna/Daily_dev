@@ -37,13 +37,10 @@ namespace DailyDev.Repository
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("INSERT INTO Category (Name, ProviderId, Source, ttl, generator, docs) VALUES (@Name, @ProviderId, @Source, @ttl, @generator, @docs)", connection);
+                var command = new SqlCommand("INSERT INTO Category (Name, ProviderId, Source) VALUES (@Name, @ProviderId, @Source)", connection);
                 command.Parameters.AddWithValue("@Name", category.Name);
                 command.Parameters.AddWithValue("@ProviderId", category.ProviderId);
                 command.Parameters.AddWithValue("@Source", category.Source);
-                command.Parameters.AddWithValue("@ttl", category.Ttl);
-                command.Parameters.AddWithValue("@generator", category.Generator);
-                command.Parameters.AddWithValue("@docs", category.Docs);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -65,10 +62,7 @@ namespace DailyDev.Repository
                             Id = (int)reader["Id"],
                             Name = reader["Name"].ToString(),
                             ProviderId = (int)reader["ProviderId"],
-                            Source = reader["Source"].ToString(),
-                            Ttl = (int)reader["ttl"],
-                            Generator = reader["generator"].ToString(),
-                            Docs = reader["docs"].ToString()
+                            Source = reader["Source"].ToString()
                         });
                     }
                 }
@@ -92,10 +86,7 @@ namespace DailyDev.Repository
                             Id = (int)reader["Id"],
                             Name = reader["Name"].ToString(),
                             ProviderId = (int)reader["ProviderId"],
-                            Source = reader["Source"].ToString(),
-                            Ttl = (int)reader["ttl"],
-                            Generator = reader["generator"].ToString(),
-                            Docs = reader["docs"].ToString()
+                            Source = reader["Source"].ToString()
                         };
                     }
                 }
@@ -107,14 +98,11 @@ namespace DailyDev.Repository
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("UPDATE Category SET Name = @Name, ProviderId = @ProviderId, Source = @Source, ttl = @ttl, generator = @generator, docs = @docs WHERE Id = @Id", connection);
+                var command = new SqlCommand("UPDATE Category SET Name = @Name, ProviderId = @ProviderId, Source = @Source WHERE Id = @Id", connection);
                 command.Parameters.AddWithValue("@Id", category.Id);
                 command.Parameters.AddWithValue("@Name", category.Name);
                 command.Parameters.AddWithValue("@ProviderId", category.ProviderId);
                 command.Parameters.AddWithValue("@Source", category.Source);
-                command.Parameters.AddWithValue("@ttl", category.Ttl);
-                command.Parameters.AddWithValue("@generator", category.Generator);
-                command.Parameters.AddWithValue("@docs", category.Docs);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -139,14 +127,17 @@ namespace DailyDev.Repository
 
             if (provider.Source.Contains("vnexpress"))
             {
-                // // Tìm các thẻ <ul> chứa danh sách các RSS feeds
-                var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='list-rss']/li/a");
-                if (rssNodes != null) // Kiểm tra nếu có thẻ <item>
+                // Tìm các thẻ <a> chứa các RSS feeds trong trang vnexpress.net/rss
+                var rssNodes = doc.DocumentNode.SelectNodes("//div[@class='wrap-list-rss']/ul/li/a");
+
+                /*if (rssNodes != null) // Kiểm tra nếu có các thẻ <a> chứa RSS feeds
                 {
                     foreach (var node in rssNodes)
                     {
-                        string name = node.SelectSingleNode("title")?.InnerText.Trim();
-                        string source = node.SelectSingleNode("link")?.InnerText.Trim();
+                        // Lấy tên category từ nội dung của thẻ <a> nhưng bỏ qua thẻ <span>
+                        string name = node.SelectSingleNode("text()")?.InnerText.Trim();
+                        // Lấy URL của RSS từ thuộc tính href của thẻ <a>
+                        string source = node.Attributes["href"]?.Value.Trim();
 
                         // Kiểm tra giá trị không null hoặc rỗng
                         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
@@ -157,36 +148,42 @@ namespace DailyDev.Repository
                                 Source = source,
                                 ProviderId = provider.Id
                             };
-                            Upsert(category); 
+                            Upsert(category);
                         }
                     }
-                }
+                }*/
             }
             else if (provider.Source.Contains("tuoitre"))
             {
-                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                // Tìm các thẻ <a> chứa các RSS feeds trong trang vnexpress.net/rss
                 var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='list-rss clearfix']/li/a");
 
-                foreach (var node in rssNodes)
+                if (rssNodes != null) // Kiểm tra nếu có các thẻ <a> chứa RSS feeds
                 {
-                    string name = node.SelectSingleNode("title")?.InnerText.Trim();
-                    string source = node.Attributes["href"].Value; // URL RSS
-
-                    if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
+                    foreach (var node in rssNodes)
                     {
-                        var category = new Category
+                        // Lấy tên category từ nội dung của thẻ <a> nhưng bỏ qua thẻ <span>
+                        string name = node.SelectSingleNode("text()")?.InnerText.Trim();
+                        // Lấy URL của RSS từ thuộc tính href của thẻ <a>
+                        string source = node.Attributes["href"]?.Value.Trim();
+
+                        // Kiểm tra giá trị không null hoặc rỗng
+                        if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(source))
                         {
-                            Name = name,
-                            Source = source,
-                            ProviderId = provider.Id
-                        };
-                        Upsert(category);
+                            var category = new Category
+                            {
+                                Name = name,
+                                Source = source,
+                                ProviderId = provider.Id
+                            };
+                            Upsert(category);
+                        }
                     }
                 }
             }
             else if (provider.Source.Contains("dantri"))
             {
-                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                /*// Tìm các thẻ <ul> chứa danh sách các RSS feeds
                 var rssNodes = doc.DocumentNode.SelectNodes("//ol[@class='flex-col']/li/a");
 
                 foreach (var node in rssNodes)
@@ -204,7 +201,7 @@ namespace DailyDev.Repository
                         };
                         Upsert(category);
                     }
-                }
+                }*/
             }
             else if (provider.Source.Contains("vietnamnet"))
             {
@@ -212,7 +209,7 @@ namespace DailyDev.Repository
             }
             else if (provider.Source.Contains("laodong"))
             {
-                // Tìm các thẻ <ul> chứa danh sách các RSS feeds
+                /*// Tìm các thẻ <ul> chứa danh sách các RSS feeds
                 var rssNodes = doc.DocumentNode.SelectNodes("//ul[@class='rss-lst']/li/a");
 
                 foreach (var node in rssNodes)
@@ -230,7 +227,7 @@ namespace DailyDev.Repository
                         };
                         Upsert(category);
                     }
-                }
+                }*/
             }
             else if (provider.Source.Contains("nhandan"))
             {
