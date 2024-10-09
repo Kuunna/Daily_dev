@@ -1,4 +1,5 @@
 using DailyDev.Repository;
+using DailyDev.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,13 @@ builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryR
 builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
 builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
 
-// Đăng ký HttpClient vào hệ thống DI
+// Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();
+/*builder.Services.AddSingleton<ItemRepository>();
+builder.Services.AddSingleton<CategoryRepository>();
+builder.Services.AddHostedService<NewsUpdateService>();*/
+
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

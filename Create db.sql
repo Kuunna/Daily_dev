@@ -13,7 +13,19 @@ CREATE TABLE [Provider] (
   [Source] NVARCHAR(255)
 )
 
-
+Drop table [Item];
+CREATE TABLE [Item] (
+  [Id] INT IDENTITY(1,1) PRIMARY KEY,
+  [Title] NVARCHAR(255),
+  [Link] NVARCHAR(255),
+  [Guid] NVARCHAR(255),
+  [PubDate] DATETIME,
+  [Image] NVARCHAR(255),
+  [CategoryId] INT,
+  [author] NVARCHAR(255),
+  [summary] NVARCHAR(MAX),
+  [comments] NVARCHAR(255)
+)
 
 
 

@@ -100,18 +100,12 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.ItemController",
-    "Method": "GetRssFeed",
-    "RelativePath": "api/Item/get-rss",
+    "Method": "FetchAllRssFeeds",
+    "RelativePath": "api/Item/fetch-all-rss",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "rssUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
