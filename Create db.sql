@@ -1,3 +1,22 @@
+Drop table Category;
+CREATE TABLE [Category] (
+  [Id] INT IDENTITY(1,1) PRIMARY KEY,
+  [Name] NVARCHAR(255),
+  [ProviderId] INT,
+  [Source] NVARCHAR(255)
+)
+
+Drop table [Provider];
+CREATE TABLE [Provider] (
+  [Id] INT IDENTITY(1,1) PRIMARY KEY,
+  [Name] NVARCHAR(255),
+  [Source] NVARCHAR(255)
+)
+
+
+
+
+
 CREATE TABLE [Provider] (
   [Id] INT IDENTITY(1,1) PRIMARY KEY,
   [Name] NVARCHAR(255),
@@ -9,10 +28,7 @@ CREATE TABLE [Category] (
   [Id] INT IDENTITY(1,1) PRIMARY KEY,
   [Name] NVARCHAR(255),
   [ProviderId] INT,
-  [Source] NVARCHAR(255),
-  [ttl] INT,
-  [generator] NVARCHAR(255),
-  [docs] NVARCHAR(255)
+  [Source] NVARCHAR(255)
 )
 GO
 
