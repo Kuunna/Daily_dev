@@ -18,10 +18,6 @@ builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRep
 
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();
-/*builder.Services.AddSingleton<ItemRepository>();
-builder.Services.AddSingleton<CategoryRepository>();
-builder.Services.AddHostedService<NewsUpdateService>();*/
-
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -32,7 +28,7 @@ builder.Services.AddControllers()
 
 // Add services to the container
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();  
+builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
