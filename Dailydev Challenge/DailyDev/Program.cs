@@ -19,6 +19,9 @@ builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRep
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();
 
+// Đăng ký NewsUpdateService vào DI container
+builder.Services.AddHostedService<NewsUpdateService>(); // <-- Đăng ký Background Service
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

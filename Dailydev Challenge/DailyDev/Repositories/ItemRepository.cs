@@ -246,5 +246,4 @@ namespace DailyDev.Repository
             throw new FormatException($"Unable to parse date: {dateString}");
         }
     }
-
 }

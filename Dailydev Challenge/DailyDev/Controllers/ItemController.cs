@@ -12,14 +12,14 @@ namespace DailyDev.Controllers
     [Route("api/[controller]")]
     public class ItemController : ControllerBase
     {
-        private readonly HttpClient _httpClient;
         private readonly ItemRepository _itemRepository;
+        private readonly HttpClient _httpClient;
         private readonly CategoryRepository _categoryRepository;
 
-        public ItemController(HttpClient httpClient, ItemRepository itemRepository, CategoryRepository categoryRepository)
+        public ItemController(ItemRepository itemRepository, HttpClient httpClient, CategoryRepository categoryRepository)
         {
-            _httpClient = httpClient;
             _itemRepository = itemRepository;
+            _httpClient = httpClient;
             _categoryRepository = categoryRepository;
         }
 
