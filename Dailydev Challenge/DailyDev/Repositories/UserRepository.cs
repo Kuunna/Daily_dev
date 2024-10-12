@@ -1,5 +1,7 @@
 ﻿using DailyDev.Models;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DailyDev.Repository
 {
@@ -12,18 +14,70 @@ namespace DailyDev.Repository
             _connectionString = connectionString;
         }
 
-        public void Add(User user)
+        public bool Register(User user)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("INSERT INTO [User] (Name, Email, Password) VALUES (@Name, @Email, @Password)", connection);
-                command.Parameters.AddWithValue("@Name", user.Name);
-                command.Parameters.AddWithValue("@Email", user.Email);
-                command.Parameters.AddWithValue("@Password", user.Password);
-                connection.Open();
-                command.ExecuteNonQuery();
+                string query = @"INSERT INTO [User] (Name, Password, Email, FullName, DOB) 
+                                 VALUES (@Name, @Password, @Email, @FullName, @DOB)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@FullName", user.FullName);
+                cmd.Parameters.AddWithValue("@DOB", user.DOB);
+
+                conn.Open();
+                int result = cmd.ExecuteNonQuery();
+                return result > 0;
             }
         }
+
+        public User Login(string name, string password)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM [User] WHERE Name = @Name AND Password = @Password";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Password", password);
+
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new User
+                        {
+                            Id = (int)reader["Id"],
+                            Name = reader["Name"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            DOB = (DateTime)reader["DOB"]
+                        };
+                    }
+                    return null;
+                }
+            }
+        }
+
+        public bool UpdateUser(int userId, User user)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE [User] SET FullName = @FullName, Email = @Email, DOB = @DOB WHERE Id = @Id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@FullName", user.FullName);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@DOB", user.DOB);
+                cmd.Parameters.AddWithValue("@Id", userId);
+
+                conn.Open();
+                int result = cmd.ExecuteNonQuery();
+                return result > 0;
+            }
+        }
+
 
         public IEnumerable<User> GetAll()
         {
@@ -41,20 +95,21 @@ namespace DailyDev.Repository
                             Id = (int)reader["Id"],
                             Name = reader["Name"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Password = reader["Password"].ToString()
+                            Password = reader["Password"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            DOB = (DateTime)reader["DOB"]
                         });
                     }
                 }
             }
             return users;
         }
-
         public User GetById(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var command = new SqlCommand("SELECT * FROM [User] WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.Add(new SqlParameter("@Id", id));
                 connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
@@ -65,39 +120,75 @@ namespace DailyDev.Repository
                             Id = (int)reader["Id"],
                             Name = reader["Name"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Password = reader["Password"].ToString()
+                            Password = reader["Password"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            DOB = (DateTime)reader["DOB"]
                         };
                     }
                 }
             }
             return null;
         }
-
-        public void Update(User user)
+        public User GetByEmail(string email)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("UPDATE [User] SET Name = @Name, Email = @Email, Password = @Password WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", user.Id);
-                command.Parameters.AddWithValue("@Name", user.Name);
-                command.Parameters.AddWithValue("@Email", user.Email);
-                command.Parameters.AddWithValue("@Password", user.Password);
+                var command = new SqlCommand("SELECT * FROM [User] WHERE Email = @Email", connection);
+                command.Parameters.Add(new SqlParameter("@Email", email));
                 connection.Open();
-                command.ExecuteNonQuery();
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new User
+                        {
+                            Id = (int)reader["Id"],
+                            Name = reader["Name"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Password = reader["Password"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            DOB = (DateTime)reader["DOB"]
+                        };
+                    }
+                }
             }
+            return null;
         }
-
+        public User GetByEmailOrName(string email, string name)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand("SELECT * FROM [User] WHERE Email = @Email OR Name = @Name", connection);
+                command.Parameters.Add(new SqlParameter("@Email", email));
+                command.Parameters.Add(new SqlParameter("@Name", name));
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new User
+                        {
+                            Id = (int)reader["Id"],
+                            Name = reader["Name"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Password = reader["Password"].ToString(),
+                            FullName = reader["FullName"].ToString(),
+                            DOB = (DateTime)reader["DOB"]
+                        };
+                    }
+                }
+            }
+            return null;
+        }
         public void Delete(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var command = new SqlCommand("DELETE FROM [User] WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.Add(new SqlParameter("@Id", id));
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
     }
-
-
 }

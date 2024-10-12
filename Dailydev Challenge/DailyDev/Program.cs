@@ -1,3 +1,4 @@
+using DailyDev.Repositories;
 using DailyDev.Repository;
 using DailyDev.Service;
 
@@ -12,9 +13,11 @@ builder.Services.AddScoped<ItemRepository>(provider => new ItemRepository(connec
 builder.Services.AddScoped<TagRepository>(provider => new TagRepository(connectionString));
 builder.Services.AddScoped<NewTagRepository>(provider => new NewTagRepository(connectionString));
 builder.Services.AddScoped<UserRepository>(provider => new UserRepository(connectionString));
+builder.Services.AddScoped<UserProviderRepository>(provider => new UserProviderRepository(connectionString));
 builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryRepository(connectionString));
 builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
 builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
+
 
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();

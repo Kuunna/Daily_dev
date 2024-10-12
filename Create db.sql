@@ -74,14 +74,26 @@ CREATE TABLE [NewTag] (
 GO
 
 CREATE TABLE [User] (
-  [Id] INT IDENTITY(1,1) PRIMARY KEY,
-  [Name] NVARCHAR(255),
-  [Password] varchar(255)
-)
+    Id INT PRIMARY KEY IDENTITY,
+    [Name] NVARCHAR(100) UNIQUE,
+    Password NVARCHAR(256),
+    Email NVARCHAR(100),
+    FullName NVARCHAR(100),
+    DOB DATE,
+    --Role NVARCHAR(50) CHECK (Role IN ('Admin', 'RegisterUser', 'ClientUser')) -- Thêm Role để phân quyền
+);
+
 
 GO
 
 CREATE TABLE [UserCategory] (
+  [Id] INT IDENTITY(1,1) PRIMARY KEY,
+  [UserId] INT,
+  [CategoryId] INT
+)
+GO
+
+CREATE TABLE [UserProvider] (
   [Id] INT IDENTITY(1,1) PRIMARY KEY,
   [UserId] INT,
   [CategoryId] INT

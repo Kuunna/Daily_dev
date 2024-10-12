@@ -437,22 +437,6 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
-    "Method": "Add",
-    "RelativePath": "User",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "DailyDev.Models.User",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.UserController",
     "Method": "GetById",
     "RelativePath": "User/{id}",
     "HttpMethod": "GET",
@@ -479,28 +463,7 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
-    "Method": "Update",
-    "RelativePath": "User/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "user",
-        "Type": "DailyDev.Models.User",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.UserController",
-    "Method": "Delete",
+    "Method": "DeleteUser",
     "RelativePath": "User/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -509,6 +472,107 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "AddCategoryPreference",
+    "RelativePath": "User/add-category-preference",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userCategoryDto",
+        "Type": "DailyDev.Controllers.UserController\u002BUserCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "AddProviderPreference",
+    "RelativePath": "User/add-provider-preference",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProviderDto",
+        "Type": "DailyDev.Controllers.UserController\u002BUserProviderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "AddTagPreference",
+    "RelativePath": "User/add-tag-preference",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userTagDto",
+        "Type": "DailyDev.Controllers.UserController\u002BUserTagDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLoginDto",
+        "Type": "DailyDev.Controllers.UserController\u002BUserLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "Register",
+    "RelativePath": "User/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRegisterDto",
+        "Type": "DailyDev.Controllers.UserController\u002BUserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "User/update/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userUpdateDto",
+        "Type": "DailyDev.Models.UserUpdateDto",
         "IsRequired": true
       }
     ],

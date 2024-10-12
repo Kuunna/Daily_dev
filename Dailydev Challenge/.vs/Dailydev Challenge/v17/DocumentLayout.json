@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\services\\newsupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\services\\newsupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ItemRepository.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\ItemRepository.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Repositories\\ItemRepository.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\ItemRepository.cs",
-              "RelativeToolTip": "DailyDev\\Repositories\\ItemRepository.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAUwPUAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T21:21:57.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Program.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
-              "RelativeToolTip": "DailyDev\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAnwCQAAAAoAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DailyDev\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAkwFoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:42:44.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NewsUpdateService.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\NewsUpdateService.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Services\\NewsUpdateService.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\NewsUpdateService.cs",
-              "RelativeToolTip": "DailyDev\\Services\\NewsUpdateService.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwE0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:27:58.896Z",
+              "WhenOpened": "2024-10-12T21:12:21.07Z",
               "EditorCaption": ""
             }
           ]

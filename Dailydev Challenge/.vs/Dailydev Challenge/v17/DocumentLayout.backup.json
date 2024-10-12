@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repositories\\usertagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repositories\\usertagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repositories\\userproviderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repositories\\userproviderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\services\\newsupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\services\\newsupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ItemRepository.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\ItemRepository.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Repositories\\ItemRepository.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\ItemRepository.cs",
-              "RelativeToolTip": "DailyDev\\Repositories\\ItemRepository.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAUwPUAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T21:21:57.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Program.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
-              "RelativeToolTip": "DailyDev\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAnwCQAAAAoAAAAAAAAAA==",
+              "Title": "UserTagRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserTagRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repositories\\UserTagRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserTagRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repositories\\UserTagRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:42:44.649Z",
+              "WhenOpened": "2024-10-12T20:50:33.747Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "NewsUpdateService.cs",
-              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\NewsUpdateService.cs",
-              "RelativeDocumentMoniker": "DailyDev\\Services\\NewsUpdateService.cs",
-              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\NewsUpdateService.cs",
-              "RelativeToolTip": "DailyDev\\Services\\NewsUpdateService.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwE0AAAAsAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Program.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
+              "RelativeToolTip": "DailyDev\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:27:58.896Z",
+              "WhenOpened": "2024-10-12T20:50:09.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserProviderRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserProviderRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repositories\\UserProviderRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserProviderRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repositories\\UserProviderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T20:48:38.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DailyDev\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwF4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T20:32:31.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "DailyDev\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAgwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T20:30:53.336Z",
               "EditorCaption": ""
             }
           ]
