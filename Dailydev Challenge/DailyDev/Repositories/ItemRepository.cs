@@ -12,6 +12,21 @@ namespace DailyDev.Repository
         {
             _connectionString = connectionString;
         }
+        public void Upsert(Item item)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                if (Exists(item.Guid))
+                {
+                    Update(item);
+                }
+                else
+                {
+                    Add(item);
+                }
+            }
+        }
+
         public void Add(Item item)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -30,6 +45,80 @@ namespace DailyDev.Repository
                 command.Parameters.AddWithValue("@Comments", item.Comments);
                 connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public void Update(Item item)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand(@"
+                    UPDATE Item 
+                    SET 
+                        Title = @Title, 
+                        Link = @Link, 
+                        Guid = @Guid, 
+                        PubDate = @PubDate, 
+                        Image = @Image, 
+                        CategoryId = @CategoryId, 
+                        author = @Author, 
+                        summary = @Summary, 
+                        comments = @Comments 
+                    WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Id", item.Id);
+                command.Parameters.AddWithValue("@Title", item.Title);
+                command.Parameters.AddWithValue("@Link", item.Link);
+                command.Parameters.AddWithValue("@Guid", item.Guid);
+                command.Parameters.AddWithValue("@PubDate", item.PubDate);
+                command.Parameters.AddWithValue("@Image", item.Image);
+                command.Parameters.AddWithValue("@CategoryId", item.CategoryId);
+                command.Parameters.AddWithValue("@Author", item.Author);
+                command.Parameters.AddWithValue("@Summary", item.Summary);
+                command.Parameters.AddWithValue("@Comments", item.Comments);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public IEnumerable<Item> GetNewsByPreferences(int userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand(@"
+                SELECT DISTINCT i.*
+                FROM Item i
+                LEFT JOIN UserCategory uc ON i.CategoryId = uc.CategoryId
+                LEFT JOIN ItemTag it ON i.Id = it.ItemId
+                LEFT JOIN UserTag ut ON it.TagId = ut.TagId
+                LEFT JOIN UserProvider up ON i.ProviderId = up.ProviderId
+                WHERE uc.UserId = @UserId 
+                   OR ut.UserId = @UserId 
+                   OR up.UserId = @UserId
+            ", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    var items = new List<Item>();
+                    while (reader.Read())
+                    {
+                        items.Add(new Item
+                        {
+                            Id = (int)reader["Id"],
+                            Title = reader["Title"].ToString(),
+                            Link = reader["Link"].ToString(),
+                            Guid = reader["Guid"].ToString(),
+                            PubDate = (DateTime)reader["PubDate"],
+                            Image = reader["Image"].ToString(),
+                            CategoryId = (int)reader["CategoryId"],
+                            Author = reader["Author"].ToString(),
+                            Summary = reader["Summary"].ToString(),
+                            Comments = reader["Comments"].ToString()
+                        });
+                    }
+                    return items;
+                }
             }
         }
 
@@ -93,38 +182,6 @@ namespace DailyDev.Repository
             return null;
         }
 
-        public void Update(Item item)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var command = new SqlCommand(@"
-                    UPDATE Item 
-                    SET 
-                        Title = @Title, 
-                        Link = @Link, 
-                        Guid = @Guid, 
-                        PubDate = @PubDate, 
-                        Image = @Image, 
-                        CategoryId = @CategoryId, 
-                        author = @Author, 
-                        summary = @Summary, 
-                        comments = @Comments 
-                    WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", item.Id);
-                command.Parameters.AddWithValue("@Title", item.Title);
-                command.Parameters.AddWithValue("@Link", item.Link);
-                command.Parameters.AddWithValue("@Guid", item.Guid);
-                command.Parameters.AddWithValue("@PubDate", item.PubDate);
-                command.Parameters.AddWithValue("@Image", item.Image);
-                command.Parameters.AddWithValue("@CategoryId", item.CategoryId);
-                command.Parameters.AddWithValue("@Author", item.Author);
-                command.Parameters.AddWithValue("@Summary", item.Summary);
-                command.Parameters.AddWithValue("@Comments", item.Comments);
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
-
         public void Delete(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -136,25 +193,6 @@ namespace DailyDev.Repository
             }
         }
 
-        public void Upsert(Item item)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                /* var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Item WHERE Guid = @Guid", connection);
-                 checkCommand.Parameters.AddWithValue("@Guid", item.Guid);
-
-                 connection.Open();
-                 var count = (int)checkCommand.ExecuteScalar(); */
-                if (Exists(item.Guid))
-                {
-                    Update(item);
-                }
-                else
-                {
-                    Add(item);
-                }
-            }
-        }
 
         // Kiểm tra nếu một bài viết đã tồn tại dựa trên Guid
         public bool Exists(string guid)
