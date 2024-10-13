@@ -70,6 +70,28 @@ namespace DailyDev.Repository
             return userTags;
         }
 
+        public UserTag GetByUserId(int userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand("SELECT * FROM [UserTag] WHERE UserId = @UserId", connection);
+                command.Parameters.Add(new SqlParameter("@UserId", userId));
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new UserTag
+                        {
+                            Id = (int)reader["Id"],
+                            UserId = (int)reader["UserId"],
+                            TagId = (int)reader["TagId"]
+                        };
+                    }
+                }
+            }
+            return null;
+        }
 
         public void Update(UserTag userTag)
         {
@@ -84,12 +106,13 @@ namespace DailyDev.Repository
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int userId, int tagId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("DELETE FROM UserTag WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                var command = new SqlCommand("DELETE FROM UserTag WHERE UserId = @UserId AND TagId = @TagId", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@TagId", tagId);
                 connection.Open();
                 command.ExecuteNonQuery();
             }

@@ -47,12 +47,12 @@ namespace DailyDev.Repository
             return userCategories;
         }
 
-        public UserCategory GetById(int id)
+        public UserCategory GetByUserId(int userId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("SELECT * FROM UserCategory WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                var command = new SqlCommand("SELECT * FROM [UserCategory] WHERE UserId = @UserId", connection);
+                command.Parameters.Add(new SqlParameter("@UserId", userId));
                 connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
@@ -83,16 +83,18 @@ namespace DailyDev.Repository
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int userId, int categoryId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("DELETE FROM UserCategory WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                var command = new SqlCommand("DELETE FROM UserCategory WHERE UserId = @UserId AND CategoryId = @CategoryId", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@CategoryId", categoryId);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
+
     }
 
 

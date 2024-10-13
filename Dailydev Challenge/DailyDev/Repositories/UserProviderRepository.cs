@@ -47,6 +47,29 @@ namespace DailyDev.Repositories
             return userProviders;
         }
 
+        public UserProvider GetByUserId(int userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand("SELECT * FROM [UserProvider] WHERE UserId = @UserId", connection);
+                command.Parameters.Add(new SqlParameter("@UserId", userId));
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new UserProvider
+                        {
+                            Id = (int)reader["Id"],
+                            UserId = (int)reader["UserId"],
+                            ProviderId = (int)reader["ProviderId"]
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+
 
         public void Update(UserProvider userProvider)
         {
@@ -61,12 +84,13 @@ namespace DailyDev.Repositories
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int userId, int providerId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("DELETE FROM UserProvider WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                var command = new SqlCommand("DELETE FROM UserProvider WHERE UserId = @UserId AND ProviderId = @ProviderId", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@ProviderId", providerId);
                 connection.Open();
                 command.ExecuteNonQuery();
             }

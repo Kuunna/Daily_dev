@@ -1,6 +1,7 @@
 ﻿using DailyDev.Models;
 using DailyDev.Repositories;
 using DailyDev.Repository;
+using DailyDev.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,6 +16,8 @@ namespace DailyDev.Controllers
         private readonly UserCategoryRepository _userCategoryRepository;
         private readonly UserTagRepository _userTagRepository;
         private readonly UserProviderRepository _userProviderRepository;
+        private readonly UserLikeRepository _userLikeRepository;
+
 
         public UserController(UserRepository userRepository, UserCategoryRepository userCategoryRepository, 
                               UserTagRepository userTagRepository, UserProviderRepository userProviderRepository)
@@ -32,7 +35,7 @@ namespace DailyDev.Controllers
             var user = new User
             {
                 Name = userRegisterDto.Name,
-                Password = HashPassword(userRegisterDto.Password),  // Hash mật khẩu
+                Password = _userRepository.HashPassword(userRegisterDto.Password),  // Hash mật khẩu
                 Email = userRegisterDto.Email,
                 FullName = userRegisterDto.FullName,
                 DOB = userRegisterDto.DOB
@@ -49,7 +52,7 @@ namespace DailyDev.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLoginDto userLoginDto)
         {
-            var user = _userRepository.Login(userLoginDto.Name, HashPassword(userLoginDto.Password));
+            var user = _userRepository.Login(userLoginDto.Name, _userRepository.HashPassword(userLoginDto.Password));
             if (user != null)
             {
                 return Ok(user);
@@ -76,8 +79,8 @@ namespace DailyDev.Controllers
         }
 
         // Thêm sở thích Category
-        [HttpPost("add-category-preference")]
-        public IActionResult AddCategoryPreference([FromBody] UserCategoryDto userCategoryDto)
+        [HttpPost("register-category")]
+        public IActionResult RegisterCategory([FromBody] UserCategoryDto userCategoryDto)
         {
             var userCategory = new UserCategory
             {
@@ -85,12 +88,21 @@ namespace DailyDev.Controllers
                 CategoryId = userCategoryDto.CategoryId
             };
             _userCategoryRepository.Add(userCategory);
-            return Ok(new { message = "Category preference added successfully" });
+            return Ok(new { message = "Category registered successfully" });
         }
 
+        // Xóa sở thích Category
+        [HttpDelete("unregister-category")]
+        public IActionResult UnregisterCategory([FromBody] UserCategoryDto userCategoryDto)
+        {
+            _userCategoryRepository.Delete(userCategoryDto.UserId, userCategoryDto.CategoryId);
+            return Ok(new { message = "Category unregistered successfully" });
+        }
+
+
         // Thêm sở thích Tag
-        [HttpPost("add-tag-preference")]
-        public IActionResult AddTagPreference([FromBody] UserTagDto userTagDto)
+        [HttpPost("register-tag")]
+        public IActionResult RegisterTag([FromBody] UserTagDto userTagDto)
         {
             var userTag = new UserTag
             {
@@ -98,12 +110,20 @@ namespace DailyDev.Controllers
                 TagId = userTagDto.TagId
             };
             _userTagRepository.Add(userTag);
-            return Ok(new { message = "Tag preference added successfully" });
+            return Ok(new { message = "Tag registered successfully" });
+        }
+
+        // Xóa sở thích Tag
+        [HttpDelete("unregister-tag")]
+        public IActionResult UnregisterTag([FromBody] UserTagDto userTagDto)
+        {
+            _userTagRepository.Delete(userTagDto.UserId, userTagDto.TagId);
+            return Ok(new { message = "Provider unregistered successfully" });
         }
 
         // Thêm sở thích Provider
-        [HttpPost("add-provider-preference")]
-        public IActionResult AddProviderPreference([FromBody] UserProviderDto userProviderDto)
+        [HttpPost("provider")]
+        public IActionResult RegisterProvider([FromBody] UserProviderDto userProviderDto)
         {
             var userProvider = new UserProvider
             {
@@ -111,68 +131,83 @@ namespace DailyDev.Controllers
                 ProviderId = userProviderDto.ProviderId
             };
             _userProviderRepository.Add(userProvider);
-            return Ok(new { message = "Provider preference added successfully" });
+            return Ok(new { message = "Provider registered successfully" });
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<User>> GetAll()
+        // Xóa sở thích Provider
+        [HttpDelete("unregister-provider")]
+        public IActionResult UnregisterProvider([FromBody] UserProviderDto userProviderDto)
         {
-            return Ok(_userRepository.GetAll());
+            _userProviderRepository.Delete(userProviderDto.UserId, userProviderDto.ProviderId);
+            return Ok(new { message = "Provider unregistered successfully" });
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<User> GetById(int id)
+
+        // Lấy thông tin user và các sở thích của họ
+        [HttpGet("preferences/{userId}")]
+        public IActionResult GetUserPreferences(int userId)
         {
-            var user = _userRepository.GetById(id);
+            var user = _userRepository.GetById(userId);
             if (user == null)
-                return NotFound();
-
-            return Ok(user);
-        }
-        [HttpDelete("{id}")]
-        public ActionResult DeleteUser(int id)
-        {
-            _userRepository.Delete(id);
-            return NoContent();
-        }
-
-        private string HashPassword(string password)
-        {
-            // Hàm băm mật khẩu
-            using (var sha256 = SHA256.Create())
             {
-                var bytes = Encoding.UTF8.GetBytes(password);
-                var hash = sha256.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                return NotFound("User not found");
             }
+
+            var userProviders = _userProviderRepository.GetByUserId(userId);
+            var userCategories = _userCategoryRepository.GetByUserId(userId);
+            var userTags = _userTagRepository.GetByUserId(userId);
+
+            return Ok(new
+            {
+                user = user,
+                providers = userProviders,
+                categories = userCategories,
+                tags = userTags
+            });
         }
-        public class UserRegisterDto
+
+        // Thích tin tức
+        [HttpPost("like-news")]
+        public IActionResult LikeNews([FromBody] UserLikeDto userLikeDto)
         {
-            public string Name { get; set; }
-            public string Password { get; set; }
-            public string Email { get; set; }
-            public string FullName { get; set; }
-            public DateTime DOB { get; set; }
+            var userLike = new UserLike
+            {
+                UserId = userLikeDto.UserId,
+                ItemId = userLikeDto.ItemId
+            };
+            _userLikeRepository.Add(userLike);
+            return Ok(new { message = "News liked successfully" });
         }
-        public class UserLoginDto
+
+        // Bỏ thích tin tức
+        [HttpDelete("unlike-news")]
+        public IActionResult UnlikeNews([FromBody] UserLikeDto userLikeDto)
         {
-            public string Name { get; set; }
-            public string Password { get; set; }
+            _userLikeRepository.Delete(userLikeDto.UserId, userLikeDto.ItemId);
+            return Ok(new { message = "News unliked successfully" });
         }
-        public class UserProviderDto
-        {
-            public int UserId { get; set; }
-            public int ProviderId { get; set; }
-        }
-        public class UserCategoryDto
-        {
-            public int UserId { get; set; }
-            public int CategoryId { get; set; }
-        }
-        public class UserTagDto
-        {
-            public int UserId { get; set; }
-            public int TagId { get; set; }
-        }
+
+
+        /*        [HttpGet]
+                public ActionResult<IEnumerable<User>> GetAll()
+                {
+                    return Ok(_userRepository.GetAll());
+                }
+
+                [HttpGet("{id}")]
+                public ActionResult<User> GetById(int id)
+                {
+                    var user = _userRepository.GetById(id);
+                    if (user == null)
+                        return NotFound();
+
+                    return Ok(user);
+                }
+                [HttpDelete("{id}")]
+                public ActionResult DeleteUser(int id)
+                {
+                    _userRepository.Delete(id);
+                    return NoContent();
+                }*/
     }
 }

@@ -107,6 +107,13 @@ CREATE TABLE [UserTag] (
 )
 GO
 
+CREATE TABLE UserLike (
+	[Id] INT IDENTITY(1,1) PRIMARY KEY,
+    UserId INT,
+    ItemId INT
+);
+
+
 CREATE TABLE [TableConfig] (
   [Id] INT IDENTITY(1,1) PRIMARY KEY,
   [UserId] INT,
