@@ -417,6 +417,22 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "LikeNews",
+    "RelativePath": "User/like-news",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLikeDto",
+        "Type": "DailyDev.Dto.UserLikeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "User/login",
     "HttpMethod": "POST",
@@ -506,6 +522,22 @@
       {
         "Name": "userTagDto",
         "Type": "DailyDev.Dto.UserTagDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "UnlikeNews",
+    "RelativePath": "User/unlike-news",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLikeDto",
+        "Type": "DailyDev.Dto.UserLikeDto",
         "IsRequired": true
       }
     ],
