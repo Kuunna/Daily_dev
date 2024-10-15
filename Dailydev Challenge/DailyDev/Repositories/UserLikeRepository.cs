@@ -3,22 +3,22 @@ using System.Data.SqlClient;
 
 namespace DailyDev.Repositories
 {
-    public class UserLikeRepository
+    public class UserItemRepository
     {
         private readonly string _connectionString;
 
-        public UserLikeRepository(string connectionString)
+        public UserItemRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public void Add(UserLike userLike)
+        public void Add(UserItem userItem)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("INSERT INTO UserLike (UserId, ItemId) VALUES (@UserId, @ItemId)", connection);
-                command.Parameters.AddWithValue("@UserId", userLike.UserId);
-                command.Parameters.AddWithValue("@ItemId", userLike.ItemId);
+                var command = new SqlCommand("INSERT INTO UserItem (UserId, ItemId) VALUES (@UserId, @ItemId)", connection);
+                command.Parameters.AddWithValue("@UserId", userItem.UserId);
+                command.Parameters.AddWithValue("@ItemId", userItem.ItemId);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -28,7 +28,7 @@ namespace DailyDev.Repositories
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = new SqlCommand("DELETE FROM UserLike WHERE UserId = @UserId AND ItemId = @ItemId", connection);
+                var command = new SqlCommand("DELETE FROM UserItem WHERE UserId = @UserId AND ItemId = @ItemId", connection);
                 command.Parameters.AddWithValue("@UserId", userId);
                 command.Parameters.AddWithValue("@ItemId", itemId);
                 connection.Open();
