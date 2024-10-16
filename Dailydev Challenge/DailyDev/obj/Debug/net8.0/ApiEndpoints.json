@@ -417,6 +417,22 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "BookmarkNews",
+    "RelativePath": "User/bookmark-news",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userItemDto",
+        "Type": "DailyDev.Dto.UserItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
     "Method": "LikeNews",
     "RelativePath": "User/like-news",
     "HttpMethod": "POST",
@@ -424,8 +440,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userLikeDto",
-        "Type": "DailyDev.Dto.UserLikeDto",
+        "Name": "userItemDto",
+        "Type": "DailyDev.Dto.UserItemDto",
         "IsRequired": true
       }
     ],
@@ -529,15 +545,31 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
-    "Method": "UnlikeNews",
-    "RelativePath": "User/unlike-news",
-    "HttpMethod": "DELETE",
+    "Method": "UnbookmarkNews",
+    "RelativePath": "User/unbookmark-news",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userLikeDto",
-        "Type": "DailyDev.Dto.UserLikeDto",
+        "Name": "userItemDto",
+        "Type": "DailyDev.Dto.UserItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "UnlikeNews",
+    "RelativePath": "User/unlike-news",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userItemDto",
+        "Type": "DailyDev.Dto.UserItemDto",
         "IsRequired": true
       }
     ],
@@ -606,7 +638,7 @@
       },
       {
         "Name": "userUpdateDto",
-        "Type": "DailyDev.Models.UserUpdateDto",
+        "Type": "DailyDev.Dto.UserUpdateDto",
         "IsRequired": true
       }
     ],

@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|d:\\daily_dev-challenge\\dailydev challenge\\dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2354E3DD-30DF-445D-9C40-36554C513320}|DailyDev\\DailyDev.csproj|solutionrelative:dailydev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Program.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Program.cs",
+              "RelativeToolTip": "DailyDev\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T22:42:18.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateService.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\UpdateService.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Services\\UpdateService.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Services\\UpdateService.cs",
+              "RelativeToolTip": "DailyDev\\Services\\UpdateService.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAgwF8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T22:42:06.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DailyDev\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Daily_dev-Challenge\\Dailydev Challenge\\DailyDev\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DailyDev\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAAAUwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T22:19:02.262Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

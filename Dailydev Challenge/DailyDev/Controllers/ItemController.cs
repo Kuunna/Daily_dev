@@ -23,6 +23,7 @@ namespace DailyDev.Controllers
             _categoryRepository = categoryRepository;
         }
 
+
         [HttpGet]
         public ActionResult<IEnumerable<Item>> GetAll()
         {

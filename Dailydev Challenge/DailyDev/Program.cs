@@ -17,14 +17,14 @@ builder.Services.AddScoped<UserProviderRepository>(provider => new UserProviderR
 builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryRepository(connectionString));
 builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
 builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
-builder.Services.AddScoped<UserLikeRepository>(provider => new UserLikeRepository(connectionString));
+builder.Services.AddScoped<UserItemRepository>(provider => new UserItemRepository(connectionString));
 
 
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();
 
-// Đăng ký NewsUpdateService vào DI container
-builder.Services.AddHostedService<NewsUpdateService>(); // <-- Đăng ký Background Service
+// Đăng ký UpdateService vào DI container
+builder.Services.AddHostedService<UpdateService>(); // <-- Đăng ký Background Service
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

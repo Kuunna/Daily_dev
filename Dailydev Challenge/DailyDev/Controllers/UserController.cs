@@ -16,7 +16,7 @@ namespace DailyDev.Controllers
         private readonly UserCategoryRepository _userCategoryRepository;
         private readonly UserTagRepository _userTagRepository;
         private readonly UserProviderRepository _userProviderRepository;
-        private readonly UserLikeRepository _userLikeRepository;
+        private readonly UserItemRepository _userItemRepository;
 
 
         public UserController(UserRepository userRepository, UserCategoryRepository userCategoryRepository, 
@@ -166,26 +166,38 @@ namespace DailyDev.Controllers
             });
         }
 
-        // Thích tin tức
+        // Thích bài viết
         [HttpPost("like-news")]
-        public IActionResult LikeNews([FromBody] UserLikeDto userLikeDto)
+        public IActionResult LikeNews([FromBody] UserItemDto userItemDto)
         {
-            var userLike = new UserLike
-            {
-                UserId = userLikeDto.UserId,
-                ItemId = userLikeDto.ItemId
-            };
-            _userLikeRepository.Add(userLike);
+            _userItemRepository.LikeItem(userItemDto.UserId, userItemDto.ItemId, true);
             return Ok(new { message = "News liked successfully" });
         }
 
-        // Bỏ thích tin tức
-        [HttpDelete("unlike-news")]
-        public IActionResult UnlikeNews([FromBody] UserLikeDto userLikeDto)
+        // Bỏ thích bài viết
+        [HttpPost("unlike-news")]
+        public IActionResult UnlikeNews([FromBody] UserItemDto userItemDto)
         {
-            _userLikeRepository.Delete(userLikeDto.UserId, userLikeDto.ItemId);
+            _userItemRepository.LikeItem(userItemDto.UserId, userItemDto.ItemId, false);
             return Ok(new { message = "News unliked successfully" });
         }
+
+        // Bookmark bài viết
+        [HttpPost("bookmark-news")]
+        public IActionResult BookmarkNews([FromBody] UserItemDto userItemDto)
+        {
+            _userItemRepository.BookmarkItem(userItemDto.UserId, userItemDto.ItemId, true);
+            return Ok(new { message = "News bookmarked successfully" });
+        }
+
+        // Bỏ bookmark bài viết
+        [HttpPost("unbookmark-news")]
+        public IActionResult UnbookmarkNews([FromBody] UserItemDto userItemDto)
+        {
+            _userItemRepository.BookmarkItem(userItemDto.UserId, userItemDto.ItemId, false);
+            return Ok(new { message = "News unbookmarked successfully" });
+        }
+
 
 
         /*        [HttpGet]

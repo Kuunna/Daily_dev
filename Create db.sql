@@ -107,11 +107,15 @@ CREATE TABLE [UserTag] (
 )
 GO
 
-CREATE TABLE UserLike (
-	[Id] INT IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE UserItem (
+    [Id] INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT,
-    ItemId INT
-);
+    ItemId INT,
+    IsLiked BIT DEFAULT 0,
+    IsBookmarked BIT DEFAULT 0,
+    LikeDate DATETIME NULL,
+    BookmarkDate DATETIME NULL
+)
 
 
 CREATE TABLE [TableConfig] (
