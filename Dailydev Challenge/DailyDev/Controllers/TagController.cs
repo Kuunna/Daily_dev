@@ -15,12 +15,6 @@ namespace DailyDev.Controllers
             _tagRepository = tagRepository;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Tag>> GetAll()
-        {
-            return Ok(_tagRepository.GetAll());
-        }
-
         [HttpGet("{id}")]
         public ActionResult<Tag> GetById(int id)
         {

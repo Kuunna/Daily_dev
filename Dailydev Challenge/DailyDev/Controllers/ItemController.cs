@@ -24,12 +24,6 @@ namespace DailyDev.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Item>> GetAll()
-        {
-            return Ok(_itemRepository.GetAll());
-        }
-
         [HttpGet("{id}")]
         public ActionResult<Item> GetById(int id)
         {
@@ -55,6 +49,8 @@ namespace DailyDev.Controllers
             return NoContent();
         }
 
+        [HttpPatch]
+
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -63,7 +59,7 @@ namespace DailyDev.Controllers
         }
 
         // Method getall RSS feed from Category and save data Item
-        [HttpGet("fetch-all-rss")]
+        [HttpGet("fetch-rss")]
         public async Task<IActionResult> FetchAllRssFeeds(CancellationToken cancellationToken)
         {
             try
@@ -89,7 +85,7 @@ namespace DailyDev.Controllers
                         _itemRepository.ParseAndSaveRss(rssXml, category.Id);
                     });
 
-                    await Task.WhenAll(tasks); // Chờ tất cả các task trong batch hoàn thành
+                    await Task.WhenAll(tasks); 
                 }
 
                 return Ok("RSS data fetched and saved successfully");

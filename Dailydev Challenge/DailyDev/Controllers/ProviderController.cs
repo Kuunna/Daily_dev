@@ -15,12 +15,6 @@ namespace DailyDev.Controllers
             _providerRepository = providerRepository;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Provider>> GetAll()
-        {
-            return Ok(_providerRepository.GetAll());
-        }
-
         [HttpGet("{id}")]
         public ActionResult<Provider> GetById(int id)
         {

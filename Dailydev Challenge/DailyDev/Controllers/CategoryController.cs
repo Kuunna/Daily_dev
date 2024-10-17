@@ -17,12 +17,6 @@ namespace DailyDev.Controllers
             _providerRepository = providerRepository;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Category>> GetAll()
-        {
-            return Ok(_categoryRepository.GetAll());
-        }
-
         [HttpGet("{id}")]
         public ActionResult<Category> GetById(int id)
         {

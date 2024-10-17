@@ -214,7 +214,6 @@ namespace DailyDev.Repository
         // Hàm phân tích và lưu RSS
         public void ParseAndSaveRss(XDocument rssXml, int categoryId)
         {
-            // Lấy tất cả các phần tử <item> trong RSS
             var items = rssXml.Descendants("item");
             foreach (var item in items)
             {
@@ -226,14 +225,11 @@ namespace DailyDev.Repository
                 var summary = item.Element("description")?.Value;
                 var comments = item.Element("comments")?.Value;
 
-                // Lấy img từ thẻ <enclosure>
                 var enclosure = item.Element("enclosure");
                 var imageUrl = enclosure?.Attribute("url")?.Value;
 
-                // Chuyển đổi pubDate thành DateTime
                 var parsedDate = ParseRssDate(pubDate);
 
-                // Tạo đối tượng Item từ dữ liệu RSS
                 var newItem = new Item
                 {
                     Title = title,
@@ -247,7 +243,6 @@ namespace DailyDev.Repository
                     Comments = comments ?? "Null"
                 };
 
-                // Lưu vào cơ sở dữ liệu
                 Upsert(newItem);
             }
         }

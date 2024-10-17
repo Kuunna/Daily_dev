@@ -196,30 +196,22 @@ namespace DailyDev.Controllers
         {
             _userItemRepository.BookmarkItem(userItemDto.UserId, userItemDto.ItemId, false);
             return Ok(new { message = "News unbookmarked successfully" });
+        } 
+
+        public ActionResult<User> GetById(int id)
+        {
+            var user = _userRepository.GetById(id);
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
 
-
-
-        /*        [HttpGet]
-                public ActionResult<IEnumerable<User>> GetAll()
-                {
-                    return Ok(_userRepository.GetAll());
-                }
-
-                [HttpGet("{id}")]
-                public ActionResult<User> GetById(int id)
-                {
-                    var user = _userRepository.GetById(id);
-                    if (user == null)
-                        return NotFound();
-
-                    return Ok(user);
-                }
-                [HttpDelete("{id}")]
-                public ActionResult DeleteUser(int id)
-                {
-                    _userRepository.Delete(id);
-                    return NoContent();
-                }*/
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUserById(int id)
+        {
+            _userRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
