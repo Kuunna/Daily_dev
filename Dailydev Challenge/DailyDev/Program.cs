@@ -18,6 +18,7 @@ builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryR
 builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
 builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
 builder.Services.AddScoped<UserItemRepository>(provider => new UserItemRepository(connectionString));
+builder.Services.AddScoped<ItemCommentRepository>(provider => new ItemCommentRepository(connectionString));
 
 
 // Đăng ký HttpClient, Repositories và BackgroundService

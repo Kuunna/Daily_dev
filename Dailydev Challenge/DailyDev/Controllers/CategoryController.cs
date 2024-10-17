@@ -55,11 +55,9 @@ namespace DailyDev.Controllers
             var providers = _providerRepository.GetAll();
             foreach (var provider in providers)
             {
-                // Cập nhật category từ từng provider
                 _categoryRepository.AddCategoryFromProvider(provider);
             }
             return Ok("Categories updated from providers successfully.");
         }
     }
-
 }

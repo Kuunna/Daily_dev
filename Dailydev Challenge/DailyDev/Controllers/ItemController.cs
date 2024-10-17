@@ -41,7 +41,7 @@ namespace DailyDev.Controllers
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public ActionResult Update(int id, [FromBody] Item item)
         {
             item.Id = id;
@@ -49,7 +49,7 @@ namespace DailyDev.Controllers
             return NoContent();
         }
 
-        [HttpPatch]
+        [HttpPut]
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
@@ -58,21 +58,20 @@ namespace DailyDev.Controllers
             return NoContent();
         }
 
-        // Method getall RSS feed from Category and save data Item
+        // Method get RSS feed from Category and save data Item
         [HttpGet("fetch-rss")]
-        public async Task<IActionResult> FetchAllRssFeeds(CancellationToken cancellationToken)
+        public async Task<IActionResult> FetchRssFeeds(CancellationToken cancellationToken)
         {
             try
             {
                 var categories = _categoryRepository.GetAll();
-                int batchSize = 10;  // Số lượng category mỗi batch
-                _httpClient.Timeout = TimeSpan.FromMinutes(5); // Tăng timeout cho HttpClient 5 phút
+                int batchSize = 10;  
+                _httpClient.Timeout = TimeSpan.FromMinutes(5);
 
                 for (int i = 0; i < categories.Count(); i += batchSize)
                 {
                     var batchCategories = categories.Skip(i).Take(batchSize);
 
-                    // Thực hiện song song các yêu cầu trong batch với Task.WhenAll
                     var tasks = batchCategories.Select(async category =>
                     {
                         var response = await _httpClient.GetAsync(category.Source, cancellationToken);
@@ -81,7 +80,6 @@ namespace DailyDev.Controllers
                         var rssData = await response.Content.ReadAsStringAsync();
                         var rssXml = XDocument.Parse(rssData);
 
-                        // Phân tích và lưu dữ liệu RSS vào bảng Item
                         _itemRepository.ParseAndSaveRss(rssXml, category.Id);
                     });
 

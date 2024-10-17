@@ -28,14 +28,14 @@ namespace DailyDev.Controllers
             _userProviderRepository = userProviderRepository;
         }
 
-        // Đăng ký tài khoản
+
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserRegisterDto userRegisterDto)
         {
             var user = new User
             {
                 Name = userRegisterDto.Name,
-                Password = _userRepository.HashPassword(userRegisterDto.Password),  // Hash mật khẩu
+                Password = _userRepository.HashPassword(userRegisterDto.Password),
                 Email = userRegisterDto.Email,
                 FullName = userRegisterDto.FullName,
                 DOB = userRegisterDto.DOB
@@ -48,7 +48,6 @@ namespace DailyDev.Controllers
             return BadRequest(new { message = "Failed to register user" });
         }
 
-        // Đăng nhập tài khoản
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLoginDto userLoginDto)
         {
@@ -60,7 +59,6 @@ namespace DailyDev.Controllers
             return Unauthorized(new { message = "Invalid credentials" });
         }
 
-        // Cập nhật thông tin người dùng
         [HttpPut("update/{userId}")]
         public IActionResult UpdateUser(int userId, [FromBody] UserUpdateDto userUpdateDto)
         {
@@ -78,7 +76,6 @@ namespace DailyDev.Controllers
             return BadRequest(new { message = "Failed to update user" });
         }
 
-        // Thêm sở thích Category
         [HttpPost("register-category")]
         public IActionResult RegisterCategory([FromBody] UserCategoryDto userCategoryDto)
         {
@@ -91,7 +88,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Category registered successfully" });
         }
 
-        // Xóa sở thích Category
         [HttpDelete("unregister-category")]
         public IActionResult UnregisterCategory([FromBody] UserCategoryDto userCategoryDto)
         {
@@ -99,8 +95,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Category unregistered successfully" });
         }
 
-
-        // Thêm sở thích Tag
         [HttpPost("register-tag")]
         public IActionResult RegisterTag([FromBody] UserTagDto userTagDto)
         {
@@ -113,7 +107,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Tag registered successfully" });
         }
 
-        // Xóa sở thích Tag
         [HttpDelete("unregister-tag")]
         public IActionResult UnregisterTag([FromBody] UserTagDto userTagDto)
         {
@@ -121,7 +114,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Provider unregistered successfully" });
         }
 
-        // Thêm sở thích Provider
         [HttpPost("provider")]
         public IActionResult RegisterProvider([FromBody] UserProviderDto userProviderDto)
         {
@@ -134,7 +126,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Provider registered successfully" });
         }
 
-        // Xóa sở thích Provider
         [HttpDelete("unregister-provider")]
         public IActionResult UnregisterProvider([FromBody] UserProviderDto userProviderDto)
         {
@@ -142,10 +133,8 @@ namespace DailyDev.Controllers
             return Ok(new { message = "Provider unregistered successfully" });
         }
 
-
-        // Lấy thông tin user và các sở thích của họ
-        [HttpGet("preferences/{userId}")]
-        public IActionResult GetUserPreferences(int userId)
+        [HttpGet("hobbies/{userId}")]
+        public IActionResult GetUserHobbies(int userId)
         {
             var user = _userRepository.GetById(userId);
             if (user == null)
@@ -165,8 +154,7 @@ namespace DailyDev.Controllers
                 tags = userTags
             });
         }
-
-        // Thích bài viết
+         
         [HttpPost("like-news")]
         public IActionResult LikeNews([FromBody] UserItemDto userItemDto)
         {
@@ -174,7 +162,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "News liked successfully" });
         }
 
-        // Bỏ thích bài viết
         [HttpPost("unlike-news")]
         public IActionResult UnlikeNews([FromBody] UserItemDto userItemDto)
         {
@@ -182,7 +169,6 @@ namespace DailyDev.Controllers
             return Ok(new { message = "News unliked successfully" });
         }
 
-        // Bookmark bài viết
         [HttpPost("bookmark-news")]
         public IActionResult BookmarkNews([FromBody] UserItemDto userItemDto)
         {
@@ -190,22 +176,12 @@ namespace DailyDev.Controllers
             return Ok(new { message = "News bookmarked successfully" });
         }
 
-        // Bỏ bookmark bài viết
         [HttpPost("unbookmark-news")]
         public IActionResult UnbookmarkNews([FromBody] UserItemDto userItemDto)
         {
             _userItemRepository.BookmarkItem(userItemDto.UserId, userItemDto.ItemId, false);
             return Ok(new { message = "News unbookmarked successfully" });
         } 
-
-        public ActionResult<User> GetById(int id)
-        {
-            var user = _userRepository.GetById(id);
-            if (user == null)
-                return NotFound();
-
-            return Ok(user);
-        }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteUserById(int id)

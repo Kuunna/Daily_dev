@@ -1,26 +1,6 @@
 [
   {
     "ContainingType": "DailyDev.Controllers.ItemController",
-    "Method": "GetAll",
-    "RelativePath": "api/Item",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Item, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.ItemController",
     "Method": "Add",
     "RelativePath": "api/Item",
     "HttpMethod": "POST",
@@ -33,6 +13,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ItemController",
+    "Method": "Delete",
+    "RelativePath": "api/Item",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -65,7 +55,7 @@
     "ContainingType": "DailyDev.Controllers.ItemController",
     "Method": "Update",
     "RelativePath": "api/Item/{id}",
-    "HttpMethod": "PUT",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -100,8 +90,8 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.ItemController",
-    "Method": "FetchAllRssFeeds",
-    "RelativePath": "api/Item/fetch-all-rss",
+    "Method": "FetchRssFeeds",
+    "RelativePath": "api/Item/fetch-rss",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -109,16 +99,101 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DailyDev.Controllers.CategoryController",
-    "Method": "GetAll",
-    "RelativePath": "Category",
+    "ContainingType": "DailyDev.Controllers.ItemCommentController",
+    "Method": "AddComment",
+    "RelativePath": "api/ItemComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "DailyDev.Models.ItemComment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ItemCommentController",
+    "Method": "UpdateComment",
+    "RelativePath": "api/ItemComment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "comment",
+        "Type": "DailyDev.Models.ItemComment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ItemCommentController",
+    "Method": "DeleteComment",
+    "RelativePath": "api/ItemComment/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ItemCommentController",
+    "Method": "GetCommentsByItem",
+    "RelativePath": "api/ItemComment/{itemId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "itemId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Category, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.ItemComment, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.ItemCommentController",
+    "Method": "GetCommentById",
+    "RelativePath": "api/ItemComment/comment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DailyDev.Models.ItemComment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -219,26 +294,6 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.ProviderController",
-    "Method": "GetAll",
-    "RelativePath": "Provider",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Provider, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.ProviderController",
     "Method": "Add",
     "RelativePath": "Provider",
     "HttpMethod": "POST",
@@ -318,26 +373,6 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.TagController",
-    "Method": "GetAll",
-    "RelativePath": "Tag",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DailyDev.Models.Tag, DailyDev, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.TagController",
     "Method": "Add",
     "RelativePath": "Tag",
     "HttpMethod": "POST",
@@ -403,6 +438,22 @@
     "ContainingType": "DailyDev.Controllers.TagController",
     "Method": "Delete",
     "RelativePath": "Tag/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "DeleteUserById",
+    "RelativePath": "User/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

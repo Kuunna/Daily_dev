@@ -79,49 +79,6 @@ namespace DailyDev.Repository
                 command.ExecuteNonQuery();
             }
         }
-
-        public IEnumerable<Item> GetNewsByPreferences(int userId)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var command = new SqlCommand(@"
-                SELECT DISTINCT i.*
-                FROM Item i
-                LEFT JOIN UserCategory uc ON i.CategoryId = uc.CategoryId
-                LEFT JOIN ItemTag it ON i.Id = it.ItemId
-                LEFT JOIN UserTag ut ON it.TagId = ut.TagId
-                LEFT JOIN UserProvider up ON i.ProviderId = up.ProviderId
-                WHERE uc.UserId = @UserId 
-                   OR ut.UserId = @UserId 
-                   OR up.UserId = @UserId
-            ", connection);
-                command.Parameters.AddWithValue("@UserId", userId);
-                connection.Open();
-
-                using (var reader = command.ExecuteReader())
-                {
-                    var items = new List<Item>();
-                    while (reader.Read())
-                    {
-                        items.Add(new Item
-                        {
-                            Id = (int)reader["Id"],
-                            Title = reader["Title"].ToString(),
-                            Link = reader["Link"].ToString(),
-                            Guid = reader["Guid"].ToString(),
-                            PubDate = (DateTime)reader["PubDate"],
-                            Image = reader["Image"].ToString(),
-                            CategoryId = (int)reader["CategoryId"],
-                            Author = reader["Author"].ToString(),
-                            Summary = reader["Summary"].ToString(),
-                            Comments = reader["Comments"].ToString()
-                        });
-                    }
-                    return items;
-                }
-            }
-        }
-
         public IEnumerable<Item> GetAll()
         {
             var items = new List<Item>();
@@ -193,8 +150,6 @@ namespace DailyDev.Repository
             }
         }
 
-
-        // Kiểm tra nếu một bài viết đã tồn tại dựa trên Guid
         public bool Exists(string guid)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -210,42 +165,82 @@ namespace DailyDev.Repository
             }
         }
 
+        public IEnumerable<Item> GetNewsByHobbies(int userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = new SqlCommand(@"
+                SELECT DISTINCT i.*
+                FROM Item i
+                LEFT JOIN UserCategory uc ON i.CategoryId = uc.CategoryId
+                LEFT JOIN ItemTag it ON i.Id = it.ItemId
+                LEFT JOIN UserTag ut ON it.TagId = ut.TagId
+                LEFT JOIN UserProvider up ON i.ProviderId = up.ProviderId
+                WHERE uc.UserId = @UserId 
+                   OR ut.UserId = @UserId 
+                   OR up.UserId = @UserId
+            ", connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
 
-        // Hàm phân tích và lưu RSS
+                using (var reader = command.ExecuteReader())
+                {
+                    var items = new List<Item>();
+                    while (reader.Read())
+                    {
+                        items.Add(new Item
+                        {
+                            Id = (int)reader["Id"],
+                            Title = reader["Title"].ToString(),
+                            Link = reader["Link"].ToString(),
+                            Guid = reader["Guid"].ToString(),
+                            PubDate = (DateTime)reader["PubDate"],
+                            Image = reader["Image"].ToString(),
+                            CategoryId = (int)reader["CategoryId"],
+                            Author = reader["Author"].ToString(),
+                            Summary = reader["Summary"].ToString(),
+                            Comments = reader["Comments"].ToString()
+                        });
+                    }
+                    return items;
+                }
+            }
+        }
+
         public void ParseAndSaveRss(XDocument rssXml, int categoryId)
         {
             var items = rssXml.Descendants("item");
+
             foreach (var item in items)
             {
-                var title = item.Element("title")?.Value;
-                var link = item.Element("link")?.Value;
-                var guid = item.Element("guid")?.Value;
-                var pubDate = item.Element("pubDate")?.Value;
-                var author = item.Element("author")?.Value;
-                var summary = item.Element("description")?.Value;
-                var comments = item.Element("comments")?.Value;
-
-                var enclosure = item.Element("enclosure");
-                var imageUrl = enclosure?.Attribute("url")?.Value;
-
-                var parsedDate = ParseRssDate(pubDate);
-
                 var newItem = new Item
                 {
-                    Title = title,
-                    Link = link,
-                    Guid = guid,
-                    PubDate = parsedDate,
-                    Image = imageUrl ?? "Null",
-                    CategoryId = categoryId, 
-                    Author = author ?? "Null",
-                    Summary = summary ?? "Null",
-                    Comments = comments ?? "Null"
+                    Title = GetElementValue(item, "title"),
+                    Link = GetElementValue(item, "link"),
+                    Guid = GetElementValue(item, "guid"),
+                    PubDate = ParseRssDate(GetElementValue(item, "pubDate")),
+                    Image = GetEnclosureImageUrl(item) ?? "Null",
+                    CategoryId = categoryId,
+                    Author = GetElementValue(item, "author") ?? "Null",
+                    Summary = GetElementValue(item, "description") ?? "Null",
+                    Comments = GetElementValue(item, "comments") ?? "Null"
                 };
 
                 Upsert(newItem);
             }
         }
+
+        private string GetElementValue(XElement item, string elementName)
+        {
+            return item.Element(elementName)?.Value;
+        }
+
+        private string GetEnclosureImageUrl(XElement item)
+        {
+            return item.Element("enclosure")?.Attribute("url")?.Value;
+        }
+
+
         public DateTime ParseRssDate(string dateString)
         {
             // Xử lý chuỗi ngày giờ và các định dạng có thể
