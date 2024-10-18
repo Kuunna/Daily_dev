@@ -219,7 +219,7 @@ namespace DailyDev.Repository
                     Link = GetElementValue(item, "link"),
                     Guid = GetElementValue(item, "guid"),
                     PubDate = ParseRssDate(GetElementValue(item, "pubDate")),
-                    Image = GetEnclosureImageUrl(item) ?? "Null",
+                    Image = item.Element("enclosure")?.Attribute("url")?.Value ?? "Null",
                     CategoryId = categoryId,
                     Author = GetElementValue(item, "author") ?? "Null",
                     Summary = GetElementValue(item, "description") ?? "Null",
