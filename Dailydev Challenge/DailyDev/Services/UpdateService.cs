@@ -55,14 +55,14 @@ namespace DailyDev.Service
         // Take categories from sources in table Provider
         private async Task FetchAndUpdateCategories(CancellationToken cancellationToken)
         {
-            using (var scope = _serviceProvider.CreateScope()) // Tạo một scope mới
+            using (var scope = _serviceProvider.CreateScope()) 
             {
                 var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepository>();
                 var providerRepository = scope.ServiceProvider.GetRequiredService<ProviderRepository>();
 
                 var providers = providerRepository.GetAll();
-                int batchSize = 2;  // Số lượng provider mỗi batch
-                _httpClient.Timeout = TimeSpan.FromMinutes(5); // Tăng timeout cho HttpClient 5 phút
+                int batchSize = 2; 
+                _httpClient.Timeout = TimeSpan.FromMinutes(5);
 
                 for (int i = 0; i < providers.Count(); i += batchSize)
                 {
@@ -85,7 +85,7 @@ namespace DailyDev.Service
                         }
                     });
 
-                    await Task.WhenAll(tasks); // Chờ tất cả các task trong batch hoàn thành
+                    await Task.WhenAll(tasks);
                 }
             }
         }
@@ -94,14 +94,14 @@ namespace DailyDev.Service
         // Hàm lấy RSS từ các category và lưu vào database
         private async Task FetchAndUpdateNews(CancellationToken cancellationToken)
         {
-            using (var scope = _serviceProvider.CreateScope()) // Tạo một scope mới
+            using (var scope = _serviceProvider.CreateScope())
             {
                 var itemRepository = scope.ServiceProvider.GetRequiredService<ItemRepository>();
                 var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepository>();
 
                 var categories = categoryRepository.GetAll();
-                int batchSize = 5;  // Số lượng category mỗi batch
-                _httpClient.Timeout = TimeSpan.FromMinutes(5); // Tăng timeout cho HttpClient 5 phút
+                int batchSize = 5; 
+                _httpClient.Timeout = TimeSpan.FromMinutes(5);
 
                 for (int i = 0; i < categories.Count(); i += batchSize)
                 {
@@ -131,7 +131,7 @@ namespace DailyDev.Service
                         }
                     });
 
-                    await Task.WhenAll(tasks); // Chờ tất cả các task trong batch hoàn thành
+                    await Task.WhenAll(tasks); 
                 }
 
             }

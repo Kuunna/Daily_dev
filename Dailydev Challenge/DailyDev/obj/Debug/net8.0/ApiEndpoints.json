@@ -484,6 +484,22 @@
   },
   {
     "ContainingType": "DailyDev.Controllers.UserController",
+    "Method": "GetUserHobbies",
+    "RelativePath": "User/hobbies/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DailyDev.Controllers.UserController",
     "Method": "LikeNews",
     "RelativePath": "User/like-news",
     "HttpMethod": "POST",
@@ -509,22 +525,6 @@
       {
         "Name": "userLoginDto",
         "Type": "DailyDev.Dto.UserLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DailyDev.Controllers.UserController",
-    "Method": "GetUserPreferences",
-    "RelativePath": "User/preferences/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
