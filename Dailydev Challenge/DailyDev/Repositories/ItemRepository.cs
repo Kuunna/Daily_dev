@@ -240,7 +240,6 @@ namespace DailyDev.Repository
             return item.Element("enclosure")?.Attribute("url")?.Value;
         }
 
-
         public DateTime ParseRssDate(string dateString)
         {
             // Xử lý chuỗi ngày giờ và các định dạng có thể
