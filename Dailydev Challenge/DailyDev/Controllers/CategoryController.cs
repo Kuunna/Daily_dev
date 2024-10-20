@@ -1,6 +1,7 @@
 ﻿using DailyDev.Models;
 using DailyDev.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace DailyDev.Controllers
 {
@@ -49,15 +50,13 @@ namespace DailyDev.Controllers
             return NoContent();
         }
 
-        [HttpPost("update-from-providers")]
-        public ActionResult UpdateCategoriesFromProviders()
+        [EnableQuery]
+        [HttpGet]
+        public IQueryable<Category> Get()
         {
-            var providers = _providerRepository.GetAll();
-            foreach (var provider in providers)
-            {
-                _categoryRepository.AddCategoryFromProvider(provider);
-            }
-            return Ok("Categories updated from providers successfully.");
+            // Convert IEnumerable to IQueryable for OData to work
+            var categories = _categoryRepository.GetAll().AsQueryable();
+            return categories;
         }
     }
 }

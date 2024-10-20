@@ -67,15 +67,12 @@ namespace DailyDev.Service
                 for (int i = 0; i < providers.Count(); i += batchSize)
                 {
                     var batchProviders = providers.Skip(i).Take(batchSize);
-
-                    // Thực hiện song song các yêu cầu trong batch với Task.WhenAll
                     var tasks = batchProviders.Select(async provider =>
                     {
                         _logger.LogInformation($"Fetching categories from provider: {provider.Name}");
 
                         try
                         {
-                            // Gọi phương thức để thêm category từ provider
                             categoryRepository.AddCategoryFromProvider(provider);
                             _logger.LogInformation($"Successfully fetched and updated categories for provider: {provider.Name}");
                         }
@@ -106,8 +103,6 @@ namespace DailyDev.Service
                 for (int i = 0; i < categories.Count(); i += batchSize)
                 {
                     var batchCategories = categories.Skip(i).Take(batchSize);
-
-                    // Thực hiện song song các yêu cầu trong batch với Task.WhenAll
                     var tasks = batchCategories.Select(async category =>
                     {
                         _logger.LogInformation($"Fetching RSS feed for category: {category.Name}");
@@ -120,7 +115,6 @@ namespace DailyDev.Service
                             var rssData = await response.Content.ReadAsStringAsync();
                             var rssXml = XDocument.Parse(rssData);
 
-                            // Phân tích và lưu dữ liệu RSS vào bảng Item
                             itemRepository.ParseAndSaveRss(rssXml, category.Id);
 
                             _logger.LogInformation($"Successfully fetched and saved data for category: {category.Name}");

@@ -151,3 +151,8 @@ D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\DailyDev.gen
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\obj\Debug\net8.0\ref\DailyDev.dll
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\System.ServiceModel.Syndication.dll
 D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\HtmlAgilityPack.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\Microsoft.AspNetCore.OData.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\Microsoft.OData.Core.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\Microsoft.OData.Edm.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\Microsoft.OData.ModelBuilder.dll
+D:\Daily_dev-Challenge\Dailydev Challenge\DailyDev\bin\Debug\net8.0\Microsoft.Spatial.dll

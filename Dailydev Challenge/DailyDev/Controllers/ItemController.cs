@@ -1,6 +1,7 @@
 ﻿using DailyDev.Models;
 using DailyDev.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -53,49 +54,18 @@ namespace DailyDev.Controllers
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
-        {
+        {S
             _itemRepository.Delete(id);
             return NoContent();
         }
 
-        // Method get RSS feed from Category and save data Item
-        [HttpGet("fetch-rss")]
-        public async Task<IActionResult> FetchRssFeeds(CancellationToken cancellationToken)
+        [EnableQuery]
+        [HttpGet]
+        public IQueryable<Item> Get()
         {
-            try
-            {
-                var categories = _categoryRepository.GetAll();
-                int batchSize = 10;  
-                _httpClient.Timeout = TimeSpan.FromMinutes(5);
-
-                for (int i = 0; i < categories.Count(); i += batchSize)
-                {
-                    var batchCategories = categories.Skip(i).Take(batchSize);
-
-                    var tasks = batchCategories.Select(async category =>
-                    {
-                        var response = await _httpClient.GetAsync(category.Source, cancellationToken);
-                        response.EnsureSuccessStatusCode();
-
-                        var rssData = await response.Content.ReadAsStringAsync();
-                        var rssXml = XDocument.Parse(rssData);
-
-                        _itemRepository.ParseAndSaveRss(rssXml, category.Id);
-                    });
-
-                    await Task.WhenAll(tasks); 
-                }
-
-                return Ok("RSS data fetched and saved successfully");
-            }
-            catch (HttpRequestException e)
-            {
-                return BadRequest($"Error fetching RSS feed: {e.Message}");
-            }
-            catch (OperationCanceledException)
-            {
-                return StatusCode(408, "Request timed out.");
-            }
+            // Convert IEnumerable to IQueryable for OData to work
+            var items = _itemRepository.GetAll().AsQueryable();
+            return items;
         }
     }
 }
