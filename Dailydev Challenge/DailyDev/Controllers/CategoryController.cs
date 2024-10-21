@@ -2,6 +2,7 @@
 using DailyDev.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 
 namespace DailyDev.Controllers
 {
@@ -10,13 +11,24 @@ namespace DailyDev.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly CategoryRepository _categoryRepository;
-        private readonly ProviderRepository _providerRepository;
 
-        public CategoryController(CategoryRepository categoryRepository, ProviderRepository providerRepository)
+        public CategoryController(CategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
-            _providerRepository = providerRepository;
         }
+
+        /*[HttpGet]
+        public ActionResult<IEnumerable<Category>> GetAll(
+            [FromQuery] string sortBy = "Id",
+            [FromQuery] string filterBy = null,
+            [FromQuery] int? page = 1,
+            [FromQuery] int? pageSize = 10)
+        {
+            var categories = _categoryRepository.GetCategories(sortBy, filterBy, page, pageSize);
+
+            return Ok(categories);
+        }*/
+
 
         [HttpGet("{id}")]
         public ActionResult<Category> GetById(int id)

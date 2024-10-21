@@ -54,7 +54,7 @@ namespace DailyDev.Controllers
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
-        {S
+        {
             _itemRepository.Delete(id);
             return NoContent();
         }
