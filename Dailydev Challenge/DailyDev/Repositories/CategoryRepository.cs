@@ -92,62 +92,6 @@ namespace DailyDev.Repository
             return null;
         }
 
-        public IEnumerable<Category> GetCategories(string sortBy, string filterBy, int? page, int? pageSize)
-        {
-            using (SqlConnection conn = new SqlConnection(_connectionString))
-            {
-                conn.Open();
-
-                string query = "SELECT * FROM Category WHERE 1=1"; // Base query
-
-                // Filtering logic
-                if (!string.IsNullOrEmpty(filterBy))
-                {
-                    query += " AND Name LIKE @FilterBy";
-                }
-
-                // Sorting logic
-                if (!string.IsNullOrEmpty(sortBy))
-                {
-                    query += " ORDER BY " + sortBy;
-                }
-                else
-                {
-                    query += " ORDER BY Id"; // Default sort by Id
-                }
-
-                // Pagination logic
-                if (page.HasValue && pageSize.HasValue)
-                {
-                    query += $" OFFSET {(page.Value - 1) * pageSize.Value} ROWS FETCH NEXT {pageSize.Value} ROWS ONLY";
-                }
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    if (!string.IsNullOrEmpty(filterBy))
-                    {
-                        cmd.Parameters.AddWithValue("@FilterBy", "%" + filterBy + "%");
-                    }
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        var categories = new List<Category>();
-                        while (reader.Read())
-                        {
-                            categories.Add(new Category
-                            {
-                                Id = reader.GetInt32(0),
-                                Name = reader.GetString(1),
-                                ProviderId = reader.GetInt32(2),
-                                Source = reader.GetString(3)
-                            });
-                        }
-                        return categories;
-                    }
-                }
-            }
-        }
-
         public void Update(Category category)
         {
             using (var connection = new SqlConnection(_connectionString))

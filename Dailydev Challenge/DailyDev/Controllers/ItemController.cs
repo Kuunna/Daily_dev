@@ -58,14 +58,5 @@ namespace DailyDev.Controllers
             _itemRepository.Delete(id);
             return NoContent();
         }
-
-        [EnableQuery]
-        [HttpGet]
-        public IQueryable<Item> Get()
-        {
-            // Convert IEnumerable to IQueryable for OData to work
-            var items = _itemRepository.GetAll().AsQueryable();
-            return items;
-        }
     }
 }
