@@ -57,8 +57,8 @@ namespace DailyDev.Service
         {
             using (var scope = _serviceProvider.CreateScope()) 
             {
-                var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepository>();
-                var providerRepository = scope.ServiceProvider.GetRequiredService<ProviderRepository>();
+                var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepo>();
+                var providerRepository = scope.ServiceProvider.GetRequiredService<ProviderRepo>();
 
                 var providers = providerRepository.GetAll();
                 int batchSize = 2; 
@@ -93,8 +93,8 @@ namespace DailyDev.Service
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var itemRepository = scope.ServiceProvider.GetRequiredService<ItemRepository>();
-                var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepository>();
+                var itemRepository = scope.ServiceProvider.GetRequiredService<ItemRepo>();
+                var categoryRepository = scope.ServiceProvider.GetRequiredService<CategoryRepo>();
 
                 var categories = categoryRepository.GetAll();
                 int batchSize = 5; 

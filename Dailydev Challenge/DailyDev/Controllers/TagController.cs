@@ -8,9 +8,9 @@ namespace DailyDev.Controllers
     [Route("[controller]")]
     public class TagController : ControllerBase
     {
-        private readonly TagRepository _tagRepository;
+        private readonly TagRepo _tagRepository;
 
-        public TagController(TagRepository tagRepository)
+        public TagController(TagRepo tagRepository)
         {
             _tagRepository = tagRepository;
         }

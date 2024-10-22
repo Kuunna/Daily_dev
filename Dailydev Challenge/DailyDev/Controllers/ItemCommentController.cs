@@ -9,9 +9,9 @@ namespace DailyDev.Controllers
     [ApiController]
     public class ItemCommentController : ControllerBase
     {
-        private readonly ItemCommentRepository _itemCommentRepository;
+        private readonly ItemCommentRepo _itemCommentRepository;
 
-        public ItemCommentController(ItemCommentRepository itemCommentRepository)
+        public ItemCommentController(ItemCommentRepo itemCommentRepository)
         {
             _itemCommentRepository = itemCommentRepository;
         }

@@ -11,18 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add repositories to the DI container
-builder.Services.AddScoped<ProviderRepository>(provider => new ProviderRepository(connectionString));
-builder.Services.AddScoped<CategoryRepository>(provider => new CategoryRepository(connectionString));
-builder.Services.AddScoped<ItemRepository>(provider => new ItemRepository(connectionString));
-builder.Services.AddScoped<TagRepository>(provider => new TagRepository(connectionString));
-builder.Services.AddScoped<ItemTagRepository>(provider => new ItemTagRepository(connectionString));
-builder.Services.AddScoped<UserRepository>(provider => new UserRepository(connectionString));
-builder.Services.AddScoped<UserProviderRepository>(provider => new UserProviderRepository(connectionString));
-builder.Services.AddScoped<UserCategoryRepository>(provider => new UserCategoryRepository(connectionString));
-builder.Services.AddScoped<UserTagRepository>(provider => new UserTagRepository(connectionString));
-builder.Services.AddScoped<TableConfigRepository>(provider => new TableConfigRepository(connectionString));
-builder.Services.AddScoped<UserItemRepository>(provider => new UserItemRepository(connectionString));
-builder.Services.AddScoped<ItemCommentRepository>(provider => new ItemCommentRepository(connectionString));
+builder.Services.AddScoped<ProviderRepo>(provider => new ProviderRepo(connectionString));
+builder.Services.AddScoped<CategoryRepo>(provider => new CategoryRepo(connectionString));
+builder.Services.AddScoped<ItemRepo>(provider => new ItemRepo(connectionString));
+builder.Services.AddScoped<TagRepo>(provider => new TagRepo(connectionString));
+builder.Services.AddScoped<ItemTagRepo>(provider => new ItemTagRepo(connectionString));
+builder.Services.AddScoped<UserRepo>(provider => new UserRepo(connectionString));
+builder.Services.AddScoped<UserProviderRepo>(provider => new UserProviderRepo(connectionString));
+builder.Services.AddScoped<UserCategoryRepo>(provider => new UserCategoryRepo(connectionString));
+builder.Services.AddScoped<UserTagRepo>(provider => new UserTagRepo(connectionString));
+builder.Services.AddScoped<TableConfigRepo>(provider => new TableConfigRepo(connectionString));
+builder.Services.AddScoped<UserItemRepo>(provider => new UserItemRepo(connectionString));
+builder.Services.AddScoped<ItemCommentRepo>(provider => new ItemCommentRepo(connectionString));
 
 // Add OData services
 builder.Services.AddControllers()

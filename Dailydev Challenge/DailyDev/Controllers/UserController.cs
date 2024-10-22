@@ -12,15 +12,15 @@ namespace DailyDev.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserRepository _userRepository;
-        private readonly UserCategoryRepository _userCategoryRepository;
-        private readonly UserTagRepository _userTagRepository;
-        private readonly UserProviderRepository _userProviderRepository;
-        private readonly UserItemRepository _userItemRepository;
+        private readonly UserRepo _userRepository;
+        private readonly UserCategoryRepo _userCategoryRepository;
+        private readonly UserTagRepo _userTagRepository;
+        private readonly UserProviderRepo _userProviderRepository;
+        private readonly UserItemRepo _userItemRepository;
 
 
-        public UserController(UserRepository userRepository, UserCategoryRepository userCategoryRepository, 
-                              UserTagRepository userTagRepository, UserProviderRepository userProviderRepository)
+        public UserController(UserRepo userRepository, UserCategoryRepo userCategoryRepository, 
+                              UserTagRepo userTagRepository, UserProviderRepo userProviderRepository)
         {
             _userRepository = userRepository;
             _userCategoryRepository = userCategoryRepository;

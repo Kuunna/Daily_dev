@@ -10,9 +10,9 @@ namespace DailyDev.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryRepository _categoryRepository;
+        private readonly CategoryRepo _categoryRepository;
 
-        public CategoryController(CategoryRepository categoryRepository)
+        public CategoryController(CategoryRepo categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

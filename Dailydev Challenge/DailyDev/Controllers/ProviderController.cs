@@ -8,9 +8,9 @@ namespace DailyDev.Controllers
     [Route("[controller]")]
     public class ProviderController : ControllerBase
     {
-        private readonly ProviderRepository _providerRepository;
+        private readonly ProviderRepo _providerRepository;
 
-        public ProviderController(ProviderRepository providerRepository)
+        public ProviderController(ProviderRepo providerRepository)
         {
             _providerRepository = providerRepository;
         }
