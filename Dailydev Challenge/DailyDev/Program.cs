@@ -26,9 +26,15 @@ builder.Services.AddScoped<ItemCommentRepo>(provider => new ItemCommentRepo(conn
 
 // Add OData services
 builder.Services.AddControllers()
-    .AddOData(opt =>
-        opt.Select().Expand().Filter().OrderBy().SetMaxTop(100).Count()
-        .AddRouteComponents("odata", GetEdmModel()));
+    .AddOData(opt => opt.AddRouteComponents("odata", GetEdmModel())
+    .Filter().Select().Expand().OrderBy().SetMaxTop(100).Count());
+// Define the EDM (Entity Data Model) for OData
+static IEdmModel GetEdmModel()
+{
+    var builder = new ODataConventionModelBuilder();
+    builder.EntitySet<Category>("Category");
+    return builder.GetEdmModel();
+}
 
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();
@@ -59,17 +65,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1"); });
 }
-
-// Enable OData routes
-app.UseRouting();
-app.UseEndpoints(endpoints => { endpoints.MapControllers();});
-IEdmModel GetEdmModel()
-{
-    var builder = new ODataConventionModelBuilder();
-    builder.EntitySet<Category>("Category");
-    return builder.GetEdmModel();
-}
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
