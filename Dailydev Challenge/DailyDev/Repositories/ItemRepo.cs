@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
-namespace DailyDev.Repository
+namespace DailyDev.Repositories
 {
     public class ItemRepo
     {

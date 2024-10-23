@@ -1,10 +1,11 @@
 using DailyDev.Models;
 using DailyDev.Repositories;
-using DailyDev.Repository;
 using DailyDev.Service;
+using DailyDev.Job;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
+using Quartz;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,27 @@ static IEdmModel GetEdmModel()
     builder.EntitySet<Category>("Category");
     return builder.GetEdmModel();
 }
+
+
+// Add Quartz Hosted Service
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+// Cấu hình Quartz
+builder.Services.AddQuartz(q =>
+{
+    q.UseMicrosoftDependencyInjectionJobFactory();
+
+    var jobKey = new JobKey("UpdateNewsJob");
+
+    q.AddJob<UpdateNewsJob>(opts => opts.WithIdentity(jobKey));
+
+    // Lấy giá trị CronSchedule từ appsettings.json
+    var cronSchedule = builder.Configuration.GetValue<string>("Quartz:UpdateNewsJob:CronSchedule");
+
+    q.AddTrigger(opts => opts
+        .ForJob(jobKey)
+        .WithIdentity("UpdateNewsJob-trigger")
+        .WithCronSchedule(cronSchedule));
+});
 
 // Đăng ký HttpClient, Repositories và BackgroundService
 builder.Services.AddHttpClient();

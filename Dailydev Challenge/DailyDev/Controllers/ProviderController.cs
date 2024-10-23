@@ -1,5 +1,5 @@
 ﻿using DailyDev.Models;
-using DailyDev.Repository;
+using DailyDev.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DailyDev.Controllers

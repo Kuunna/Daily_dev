@@ -1,5 +1,5 @@
 ﻿using DailyDev.Models;
-using DailyDev.Repository;
+using DailyDev.Repositories;
 using System.Xml.Linq;
 using Microsoft.Extensions.Hosting;
 using System;

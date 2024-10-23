@@ -1,7 +1,10 @@
 CREATE TABLE [Provider] (
   [Id] INT IDENTITY(1,1) PRIMARY KEY,
   [Name] NVARCHAR(255),
-  [Source] NVARCHAR(255)
+  [Source] NVARCHAR(255),
+  [ProcessId] INT NULL, 
+  [Status] NVARCHAR(50) DEFAULT 'Not Started', 
+  [ProcessAt] DATETIME NULL
 )
 GO
 

@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DailyDev.Repository
+namespace DailyDev.Repositories
 {
     public class UserRepo
     {

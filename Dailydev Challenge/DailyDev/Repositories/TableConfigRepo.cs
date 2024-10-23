@@ -1,7 +1,7 @@
 ﻿using DailyDev.Models;
 using System.Data.SqlClient;
 
-namespace DailyDev.Repository
+namespace DailyDev.Repositories
 {
     public class TableConfigRepo
     {

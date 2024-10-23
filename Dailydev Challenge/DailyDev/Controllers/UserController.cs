@@ -1,6 +1,6 @@
 ﻿using DailyDev.Models;
 using DailyDev.Repositories;
-using DailyDev.Repository;
+using DailyDev.Repositories;
 using DailyDev.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
